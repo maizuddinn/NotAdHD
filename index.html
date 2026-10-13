@@ -889,20 +889,160 @@ body.dark .dtrow input{color-scheme:dark}
 .pbar i{display:block;height:100%;background:var(--accent)}
 @media print{#pdfview{display:none!important}}
 
+/* ===== v2.5: linked folders, favourites, right-pane edge ===== */
+.ibtn{width:34px;padding:0;justify-content:center}
+.ibtn.on{background:var(--soft);color:var(--soft-ink);border-color:transparent}
+#topright{gap:6px}
+.lkb{display:inline-flex;color:var(--accent);flex:none;margin-left:2px}
+.lkb.inh{opacity:.45}
+.tile .lkb{position:absolute;right:10px;bottom:8px}
+.lkcard{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--line2);border-radius:12px;background:var(--chip)}
+.lkcard .lki{display:inline-flex;color:#d99a00}
+.lfsnap{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:12.5px;color:var(--ink2);flex-wrap:wrap}
+.lfsnap b{font-weight:600;color:var(--ink)}
+.lfrow{grid-template-columns:30px minmax(0,1fr) 110px 86px 170px 40px}
+.lfrow .lfck{display:flex;align-items:center;justify-content:center}
+.lfrow .lfck input{width:15px;height:15px;accent-color:var(--accent)}
+.xprow.sel{background:var(--soft)!important}
+.xprow.cutrow{opacity:.5}
+.lftab:focus{outline:0}
+.lftab:focus-visible{box-shadow:0 0 0 2px var(--accent)}
+.lftext{width:100%;height:56vh;font-family:var(--mono);font-size:13px;line-height:1.5;padding:12px;resize:none;white-space:pre;overflow:auto}
+.lfpick{display:flex;flex-direction:column;max-height:50vh;overflow:auto;gap:1px}
+.lfpl{display:flex;align-items:center;gap:6px;height:32px;padding:0 8px;border-radius:8px;cursor:pointer;font-size:13.5px;color:var(--ink2)}
+.lfpl:hover{background:var(--btn-hover)}
+.lfpl.on{background:var(--soft);color:var(--soft-ink);font-weight:600}
+.lfpl .t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lfpl .tw{width:18px;height:18px;border:0;background:transparent;color:var(--mute);padding:0;display:flex;align-items:center;justify-content:center}
+.lfpl .tw svg{transition:transform .12s}
+.lfpl .tw.open svg{transform:rotate(90deg)}
+.lfpe{font-size:12px;color:var(--mute);padding:4px 0}
+@media (max-width:980px){.lfrow{grid-template-columns:30px minmax(0,1fr) 80px 40px}.lfrow>.xpty,.lfrow>.xpmd{display:none}}
+/* right pane: a thin edge you can click, like the left pane */
+#aside{position:relative}
+.asideedge{position:absolute;top:0;bottom:0;left:-4px;width:9px;padding:0;border:0;background:transparent;cursor:pointer;z-index:6}
+.asideedge:hover,.asideedge:focus-visible{background:var(--accent);opacity:.4;width:5px;left:-2px}
+
+/* ===== v2.5: Liquid Glass (iOS style), light and night ===== */
+body[data-skin="liquid"]{--bg:#e9f1ff;--bar:rgba(255,255,255,.5);--rail:rgba(255,255,255,.34);--paper:rgba(255,255,255,.9);--ink:#1c1c1e;--ink2:#3a3a3c;--mute:#6c6c70;--line:rgba(60,60,67,.13);--line2:rgba(60,60,67,.22);--chip:rgba(118,118,128,.12);--accent:#007aff;--accent-ink:#fff;--soft:rgba(0,122,255,.15);--soft-ink:#0a5fd0;--btn:rgba(255,255,255,.58);--btn-hover:rgba(255,255,255,.88);--shadow:0 18px 50px rgba(30,50,110,.22);--overlay:rgba(40,50,80,.32);--warn-bg:rgba(255,204,0,.2);--warn-ink:#7a5200;
+ --g1:rgba(255,255,255,.72);--g2:rgba(255,255,255,.36);--gb:rgba(255,255,255,.7);--gh:rgba(255,255,255,.95);--gl:rgba(255,255,255,.4);--gs:rgba(40,60,130,.14);--spec:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,0) 52%);
+ --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter","Segoe UI Variable Text","Segoe UI",system-ui,sans-serif;
+ background:radial-gradient(60% 50% at 12% 8%,#b9dcff 0,transparent 62%),radial-gradient(50% 45% at 88% 14%,#ffd3ea 0,transparent 62%),radial-gradient(60% 55% at 72% 98%,#cdf4e0 0,transparent 62%),radial-gradient(40% 40% at 30% 85%,#e4d8ff 0,transparent 60%),linear-gradient(160deg,#eaf2ff,#f4ecff);background-attachment:fixed}
+body[data-skin="liquidnight"]{--bg:#0a0f22;--bar:rgba(30,36,70,.52);--rail:rgba(24,30,62,.4);--paper:rgba(24,28,52,.9);--ink:#f5f5f7;--ink2:#d4d6e4;--mute:rgba(220,224,245,.62);--line:rgba(255,255,255,.1);--line2:rgba(255,255,255,.18);--chip:rgba(255,255,255,.09);--accent:#0a84ff;--accent-ink:#fff;--soft:rgba(10,132,255,.28);--soft-ink:#a9d1ff;--btn:rgba(255,255,255,.1);--btn-hover:rgba(255,255,255,.18);--shadow:0 20px 56px rgba(0,0,0,.55);--overlay:rgba(2,4,14,.62);
+ --g1:rgba(255,255,255,.15);--g2:rgba(255,255,255,.05);--gb:rgba(255,255,255,.2);--gh:rgba(255,255,255,.34);--gl:rgba(255,255,255,.1);--gs:rgba(0,0,0,.42);--spec:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,0) 50%);
+ --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter","Segoe UI Variable Text","Segoe UI",system-ui,sans-serif;
+ background:radial-gradient(60% 50% at 10% 6%,#1d3a8a 0,transparent 62%),radial-gradient(50% 45% at 90% 12%,#5b1f7a 0,transparent 62%),radial-gradient(60% 55% at 70% 100%,#0b4a63 0,transparent 62%),linear-gradient(160deg,#080c1c,#120b26);background-attachment:fixed}
+body[data-skin^="liquid"]{letter-spacing:-.011em;-webkit-font-smoothing:antialiased}
+body[data-skin^="liquid"] #app,body[data-skin^="liquid"] #mainrow,body[data-skin^="liquid"] main,body[data-skin^="liquid"] #noteview,body[data-skin^="liquid"] #canvascol,body[data-skin^="liquid"] #libview,body[data-skin^="liquid"] #pdfview{background:transparent}
+body[data-skin^="liquid"] #canvas{background:transparent;--desk:transparent}
+/* glass surfaces */
+body[data-skin^="liquid"] #topwrap,body[data-skin^="liquid"] #rail,body[data-skin^="liquid"] #aside,body[data-skin^="liquid"] #status,body[data-skin^="liquid"] #msbar,body[data-skin^="liquid"] #findbar{background:linear-gradient(135deg,var(--g1),var(--g2));-webkit-backdrop-filter:blur(26px) saturate(185%);backdrop-filter:blur(26px) saturate(185%);border-color:var(--gb);box-shadow:inset 0 1px 0 var(--gh)}
+body[data-skin^="liquid"] #topbar,body[data-skin^="liquid"] #fmtbar{background:transparent;border-color:var(--line)}
+body[data-skin^="liquid"] #topwrap{margin:10px 12px 0;border:1px solid var(--gb);border-radius:24px;box-shadow:inset 0 1px 1px var(--gh),inset 0 -1px 1px var(--gl),0 10px 34px var(--gs)}
+body[data-skin^="liquid"] #mainrow{padding:10px 12px 0;gap:10px}
+body[data-skin^="liquid"] #rail,body[data-skin^="liquid"] #aside{border:1px solid var(--gb);border-radius:24px;box-shadow:inset 0 1px 1px var(--gh),inset 0 -1px 1px var(--gl),0 10px 34px var(--gs);overflow:hidden}
+body[data-skin^="liquid"] main{border-radius:24px;overflow:hidden}
+body[data-skin^="liquid"] #status{margin:8px 12px 10px;border:1px solid var(--gb);border-radius:18px;height:34px}
+body[data-skin^="liquid"] .railedge,body[data-skin^="liquid"] .asideedge{display:none}
+body[data-skin^="liquid"] .menu,body[data-skin^="liquid"] .dlg,body[data-skin^="liquid"] .appspop,body[data-skin^="liquid"] .alcard,body[data-skin^="liquid"] .pselbar,body[data-skin^="liquid"] .pannbar,body[data-skin^="liquid"] .pnoteed,body[data-skin^="liquid"] .toast,body[data-skin^="liquid"] .cbar{background:linear-gradient(135deg,var(--g1),var(--g2)),var(--paper);-webkit-backdrop-filter:blur(34px) saturate(190%);backdrop-filter:blur(34px) saturate(190%);border:1px solid var(--gb);box-shadow:inset 0 1px 1px var(--gh),inset 0 -1px 1px var(--gl),0 22px 60px var(--gs)}
+body[data-skin^="liquid"] .menu{border-radius:20px;padding:8px}
+body[data-skin^="liquid"] .dlg{border-radius:30px}
+body[data-skin^="liquid"] .appspop,body[data-skin^="liquid"] .alcard,body[data-skin^="liquid"] .pnoteed{border-radius:24px}
+body[data-skin^="liquid"] .toast{border-radius:22px;color:var(--ink)}
+body[data-skin^="liquid"] .toast small{color:var(--mute)}
+body[data-skin^="liquid"] .menu .mi:hover,body[data-skin^="liquid"] .menu button:hover{background:var(--soft)}
+body[data-skin^="liquid"] .mbg{-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+/* tabs */
+body[data-skin^="liquid"] .tab{border-radius:14px;margin:0 2px 6px;height:30px;color:var(--ink2)}
+body[data-skin^="liquid"] .tab.on{background:linear-gradient(135deg,var(--g1),var(--g2));color:var(--ink);box-shadow:inset 0 1px 1px var(--gh),0 4px 14px var(--gs);border:1px solid var(--gb)}
+body[data-skin^="liquid"] #topbar{align-items:center}
+/* buttons: little glass capsules with a sheen */
+body[data-skin^="liquid"] .btn{border-radius:999px;border:1px solid var(--gb);background:var(--spec),linear-gradient(135deg,var(--g1),var(--g2));box-shadow:inset 0 1px 1px var(--gh),inset 0 -1px 1px var(--gl),0 4px 14px var(--gs);transition:transform .16s cubic-bezier(.3,1.6,.5,1),box-shadow .2s,background .2s;color:var(--ink)}
+body[data-skin^="liquid"] .btn:hover{background:radial-gradient(110px circle at var(--mx,50%) var(--my,0),rgba(255,255,255,.55),transparent 62%),var(--spec),linear-gradient(135deg,var(--g1),var(--g2));transform:translateY(-1px)}
+body[data-skin^="liquid"] .btn:active{transform:scale(.94)}
+body[data-skin^="liquid"] .btn.pri{background:var(--spec),linear-gradient(160deg,#5ab4ff,#0a73f0 70%);border-color:rgba(255,255,255,.45);color:#fff;box-shadow:inset 0 1px 1px rgba(255,255,255,.8),inset 0 -2px 6px rgba(0,60,170,.35),0 8px 22px rgba(0,122,255,.4);filter:none}
+body[data-skin^="liquid"] .btn.pri:hover{background:radial-gradient(110px circle at var(--mx,50%) var(--my,0),rgba(255,255,255,.5),transparent 62%),var(--spec),linear-gradient(160deg,#6cbcff,#1a7dfa 70%)}
+body[data-skin^="liquid"] .btn.danger{color:#ff3b30}
+body[data-skin^="liquid"] .btn.soft{background:var(--soft);color:var(--soft-ink)}
+body[data-skin^="liquid"] .btn.flat{background:var(--chip);box-shadow:none}
+body[data-skin^="liquid"] .ibtn{width:36px;height:36px;padding:0;border-radius:50%}
+body[data-skin^="liquid"] .ibtn.on{background:var(--spec),linear-gradient(160deg,#5ab4ff,#0a73f0 70%);color:#fff}
+body[data-skin^="liquid"] .tb{border-radius:50%;transition:transform .16s cubic-bezier(.3,1.6,.5,1),background .2s}
+body[data-skin^="liquid"] .tb:hover{background:var(--spec),linear-gradient(135deg,var(--g1),var(--g2));box-shadow:inset 0 1px 1px var(--gh),0 4px 12px var(--gs);transform:scale(1.08)}
+body[data-skin^="liquid"] .tb:active{transform:scale(.92)}
+body[data-skin^="liquid"] .tb.on{background:var(--spec),linear-gradient(160deg,#5ab4ff,#0a73f0 70%);color:#fff;box-shadow:inset 0 1px 1px rgba(255,255,255,.75),0 5px 14px rgba(0,122,255,.38)}
+body[data-skin^="liquid"] .chip{border-radius:999px;background:var(--chip);border-color:transparent}
+body[data-skin^="liquid"] .chip.on{background:var(--soft);color:var(--soft-ink)}
+/* segmented controls */
+body[data-skin^="liquid"] .seg{padding:3px;border-radius:999px;background:var(--chip);border:0;box-shadow:inset 0 1px 2px rgba(0,0,0,.08)}
+body[data-skin^="liquid"] .seg button{border-radius:999px;height:26px;transition:background .2s,box-shadow .2s}
+body[data-skin^="liquid"] .seg button.on{background:linear-gradient(135deg,var(--g1),var(--g2)),var(--paper);box-shadow:inset 0 1px 1px var(--gh),0 3px 10px var(--gs);color:var(--ink)}
+/* inputs */
+body[data-skin^="liquid"] .fld,body[data-skin^="liquid"] input.fld,body[data-skin^="liquid"] select.btn{border-radius:999px;background:var(--chip);border:1px solid transparent}
+body[data-skin^="liquid"] .fld:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--soft)}
+body[data-skin^="liquid"] .lftext,body[data-skin^="liquid"] textarea.fld,body[data-skin^="liquid"] .pnoteed textarea,body[data-skin^="liquid"] .pstudy{border-radius:16px}
+/* iOS switches */
+body[data-skin^="liquid"] .tgl,body[data-skin^="liquid"] .panel .tgl{width:51px;height:31px;border-radius:16px;background:#34c759;transition:background .25s}
+body[data-skin^="liquid"] .tgl i{width:27px;height:27px;top:2px;right:2px;box-shadow:0 3px 8px rgba(0,0,0,.3);transition:all .25s cubic-bezier(.3,1.5,.5,1)}
+body[data-skin^="liquid"] .tgl.off{background:rgba(120,120,128,.32)}
+body[data-skin^="liquid"] .tgl.off i{left:2px;right:auto}
+/* left pane: glowing blue capsule for the selection */
+body[data-skin^="liquid"] .trow{border-radius:14px;height:34px}
+body[data-skin^="liquid"] .trow:hover{background:var(--chip)}
+body[data-skin^="liquid"] .trow.on,body[data-skin^="liquid"] .rl.on{background:var(--spec),linear-gradient(160deg,#5ab4ff,#0a73f0 70%);color:#fff;font-weight:600;box-shadow:inset 0 1px 1px rgba(255,255,255,.8),inset 0 -2px 5px rgba(0,60,170,.3),0 6px 16px rgba(0,122,255,.35)}
+body[data-skin^="liquid"] .trow.on .cnt,body[data-skin^="liquid"] .trow.on .tw,body[data-skin^="liquid"] .trow.on .lkb,body[data-skin^="liquid"] .rl.on .cnt{color:rgba(255,255,255,.85)}
+body[data-skin^="liquid"] .rl{border-radius:14px}
+body[data-skin^="liquid"] #rail .sec{border-radius:12px;background:transparent;color:var(--mute)}
+body[data-skin^="liquid"] .tb.rl2.on{background:var(--spec),linear-gradient(160deg,#5ab4ff,#0a73f0 70%);color:#fff}
+/* right pane tabs */
+body[data-skin^="liquid"] .atabs{border-bottom:0;padding:10px 10px 4px;gap:4px}
+body[data-skin^="liquid"] .atab{border-radius:999px;border:0;height:28px}
+body[data-skin^="liquid"] .atab.on{background:linear-gradient(135deg,var(--g1),var(--g2)),var(--paper);box-shadow:inset 0 1px 1px var(--gh),0 3px 10px var(--gs);color:var(--ink)}
+/* the note sheet and library */
+body[data-skin^="liquid"] #sheet{border-radius:22px;box-shadow:0 1px 0 var(--gh) inset,0 16px 44px var(--gs);border:1px solid var(--gb);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px)}
+body[data-skin^="liquid"] .card,body[data-skin^="liquid"] .tile,body[data-skin^="liquid"] .xptab,body[data-skin^="liquid"] .xpcard,body[data-skin^="liquid"] .lkcard,body[data-skin^="liquid"] .fbox{background:linear-gradient(135deg,var(--g1),var(--g2));border:1px solid var(--gb);border-radius:22px;box-shadow:inset 0 1px 1px var(--gh),inset 0 -1px 1px var(--gl),0 10px 30px var(--gs);-webkit-backdrop-filter:blur(18px) saturate(170%);backdrop-filter:blur(18px) saturate(170%);transition:transform .2s cubic-bezier(.3,1.4,.5,1),box-shadow .2s}
+body[data-skin^="liquid"] .card:hover,body[data-skin^="liquid"] .tile:hover{transform:translateY(-3px);box-shadow:inset 0 1px 1px var(--gh),0 18px 40px var(--gs)}
+body[data-skin^="liquid"] .card:active,body[data-skin^="liquid"] .tile:active{transform:scale(.985)}
+body[data-skin^="liquid"] .card .prev{border-radius:0}
+body[data-skin^="liquid"] .xprow.hd{background:transparent}
+body[data-skin^="liquid"] .xprow:not(.hd):hover{background:var(--chip)}
+body[data-skin^="liquid"] .xprow.sel{background:var(--soft)!important}
+body[data-skin^="liquid"] #libview .lq{border-radius:999px;background:linear-gradient(135deg,var(--g1),var(--g2));border:1px solid var(--gb);box-shadow:inset 0 1px 1px var(--gh)}
+body[data-skin^="liquid"] .pdfbar{background:linear-gradient(135deg,var(--g1),var(--g2));-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);border-color:var(--gb)}
+body[data-skin^="liquid"] .pdfside{background:var(--rail);border-color:var(--gb)}
+body[data-skin^="liquid"] .pdfscroll{background:transparent}
+body[data-skin^="liquid"] .thc{border-radius:16px}
+body[data-skin^="liquid"] .apptile:hover{background:var(--chip)}
+body[data-skin^="liquid"] .aico{border-radius:14px;box-shadow:inset 0 1px 1px rgba(255,255,255,.5),0 4px 10px rgba(0,0,0,.18)}
+/* night adjustments */
+body[data-skin="liquidnight"] .btn.danger{color:#ff6b61}
+body[data-skin="liquidnight"] #sheet{background:rgba(22,26,50,.88)}
+body[data-skin="liquidnight"] .tb.on,body[data-skin="liquidnight"] .trow.on{color:#fff}
+/* scrollbars */
+body[data-skin^="liquid"] ::-webkit-scrollbar{width:10px;height:10px}
+body[data-skin^="liquid"] ::-webkit-scrollbar-thumb{background:rgba(120,120,128,.35);border-radius:10px;border:3px solid transparent;background-clip:content-box}
+@media (prefers-reduced-transparency:reduce){
+ body[data-skin^="liquid"],body[data-skin^="liquid"] #topwrap,body[data-skin^="liquid"] #rail,body[data-skin^="liquid"] #aside,body[data-skin^="liquid"] #status,body[data-skin^="liquid"] .menu,body[data-skin^="liquid"] .dlg,body[data-skin^="liquid"] .card,body[data-skin^="liquid"] .tile,body[data-skin^="liquid"] .xptab,body[data-skin^="liquid"] .appspop,body[data-skin^="liquid"] .toast,body[data-skin^="liquid"] #sheet{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+ body[data-skin^="liquid"]{--bar:var(--paper);--rail:var(--paper);--g1:var(--paper);--g2:var(--paper)}}
+@media (prefers-reduced-motion:reduce){body[data-skin^="liquid"] *{transition:none!important}}
+@media print{body[data-skin^="liquid"] #topwrap,body[data-skin^="liquid"] #rail,body[data-skin^="liquid"] #aside{box-shadow:none}}
+
 </style>
 </head>
 <body>
 <div id="app">
   <header id="topwrap">
     <div id="topbar">
-      <div id="logo"><b id="logoi"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#eef1f6"/><g transform="translate(0,-3) scale(.96)"><rect x="4" y="30" width="52" height="7.5" rx="2" fill="#ff8a3d" transform="rotate(-3 30 33.7)"/><rect x="4" y="43" width="52" height="7.5" rx="2" fill="#3b82f6" transform="rotate(3 30 46.7)"/><g transform="translate(5 0)"><path d="M14.20 58.01 L14.38 57.60 L14.56 57.20 L14.75 56.80 L14.93 56.39 L15.11 55.99 L15.29 55.59 L15.48 55.18 L15.66 54.78 L15.84 54.38 L16.03 53.97 L16.21 53.57 L16.39 53.17 L16.58 52.76 L16.76 52.36 L16.92 51.95 L17.07 51.53 L17.21 51.11 L17.36 50.69 L17.50 50.27 L17.65 49.85 L17.79 49.43 L17.94 49.01 L18.09 48.59 L18.23 48.17 L18.38 47.75 L18.53 47.34 L18.68 46.92 L18.82 46.50 L18.97 46.08 L19.12 45.66 L19.27 45.25 L19.42 44.83 L19.57 44.41 L19.73 43.99 L19.88 43.58 L20.03 43.16 L20.18 42.75 L20.33 42.33 L20.49 41.91 L20.64 41.50 L20.80 41.08 L20.95 40.67 L21.11 40.25 L21.27 39.84 L21.42 39.42 L21.58 39.01 L21.74 38.59 L21.90 38.18 L22.06 37.77 L22.22 37.35 L22.38 36.94 L22.54 36.53 L22.70 36.12 L22.86 35.70 L23.03 35.29 L23.19 34.88 L23.35 34.47 L23.52 34.06 L23.69 33.65 L24.08 33.33 L24.25 32.92 L24.41 32.51 L24.58 32.10 L24.74 31.69 L24.90 31.27 L25.06 30.86 L25.21 30.45 L25.37 30.03 L25.52 29.61 L25.68 29.20 L25.83 28.78 L25.99 28.37 L26.13 27.95 L26.27 27.52 L26.44 27.12 L26.60 26.70 L26.74 26.28 L26.90 25.87 L27.01 25.43 L27.15 25.01 L27.34 24.61 L27.49 24.19 L27.63 23.77 L27.76 23.35 L27.86 22.91 L28.04 22.51 L28.24 22.11 L28.35 21.67 L28.48 21.25 L28.60 20.82 L28.72 20.39 L28.94 20.00 L29.09 19.58 L29.17 19.14 L29.31 18.71 L29.42 18.28 L29.58 17.87 L29.81 17.48 L29.90 17.04 L29.97 16.59 L30.13 16.17 L30.25 15.74 L30.45 15.35 L30.64 14.95 L30.66 14.48 L30.76 14.04 L30.94 13.63 L31.08 13.21 L31.29 12.82 L31.41 12.39 L31.40 11.90 L31.56 11.49 L31.76 11.09 L31.89 10.67 L32.09 10.27 L32.12 9.80 L32.13 9.33 L32.38 8.95 L32.55 8.54 L32.67 8.11 L32.30 7.96 L31.93 8.28 L31.55 8.61 L31.34 9.00 L31.08 9.37 L30.89 9.77 L30.68 10.16 L30.27 10.47 L29.98 10.83 L29.80 11.23 L29.54 11.60 L29.35 12.00 L29.06 12.36 L28.68 12.68 L28.47 13.08 L28.28 13.48 L28.02 13.85 L27.81 14.24 L27.48 14.58 L27.17 14.93 L27.01 15.34 L26.79 15.73 L26.53 16.10 L26.28 16.48 L25.96 16.83 L25.73 17.21 L25.57 17.62 L25.32 18.00 L25.06 18.37 L24.81 18.74 L24.52 19.10 L24.34 19.51 L24.15 19.91 L23.88 20.28 L23.64 20.65 L23.40 21.03 L23.16 21.41 L22.99 21.82 L22.77 22.21 L22.50 22.58 L22.28 22.97 L22.06 23.35 L21.85 23.75 L21.66 24.15 L21.43 24.53 L21.20 24.91 L20.99 25.31 L20.78 25.70 L20.59 26.10 L20.39 26.50 L20.17 26.88 L19.97 27.28 L19.77 27.68 L19.58 28.08 L19.38 28.47 L19.19 28.87 L19.00 29.28 L18.81 29.68 L18.63 30.08 L18.45 30.49 L18.27 30.89 L18.33 31.39 L18.15 31.80 L17.98 32.21 L17.80 32.62 L17.63 33.02 L17.46 33.43 L17.28 33.84 L17.11 34.25 L16.94 34.66 L16.77 35.06 L16.60 35.47 L16.43 35.88 L16.26 36.29 L16.09 36.70 L15.92 37.11 L15.76 37.52 L15.59 37.93 L15.42 38.34 L15.26 38.75 L15.09 39.16 L14.93 39.58 L14.77 39.99 L14.60 40.40 L14.44 40.81 L14.28 41.22 L14.12 41.64 L13.95 42.05 L13.79 42.46 L13.63 42.88 L13.47 43.29 L13.31 43.70 L13.15 44.12 L13.00 44.53 L12.84 44.94 L12.68 45.36 L12.52 45.77 L12.37 46.19 L12.21 46.60 L12.05 47.02 L11.90 47.43 L11.74 47.85 L11.59 48.26 L11.43 48.68 L11.28 49.09 L11.12 49.51 L10.98 49.93 L10.87 50.36 L10.76 50.79 L10.64 51.23 L10.53 51.66 L10.42 52.09 L10.30 52.53 L10.19 52.96 L10.08 53.39 L9.97 53.83 L9.85 54.26 L9.74 54.69 L9.63 55.13 L9.52 55.56 L9.40 55.99 L9.25 56.48 L9.20 56.99 L9.25 57.49 L9.39 57.98 L9.63 58.43 L9.95 58.83 L10.34 59.15 L10.79 59.40 L11.28 59.55 L11.79 59.60 L12.29 59.55 L12.78 59.41 L13.23 59.17 L13.63 58.85 L13.95 58.46Z" fill="#14171c"/></g></g><g transform="translate(4.8 0) rotate(3 23 54.8)"><path d="M21.74 52.00 L21.72 52.31 L21.64 52.62 L21.51 52.90 L21.33 53.17 L21.11 53.41 L20.86 53.62 L20.58 53.79 L20.29 53.94 L19.98 54.06 L19.66 54.15 L19.33 54.20 L19.00 54.22 L18.67 54.20 L18.34 54.14 L18.03 54.04 L17.73 53.91 L17.46 53.74 L17.22 53.55 L17.01 53.33 L16.83 53.09 L16.68 52.84 L16.56 52.57 L16.46 52.29 L16.41 52.00 L16.39 51.70 L16.41 51.40 L16.48 51.09 L16.62 50.80 L16.80 50.53 L17.04 50.29 L17.32 50.10 L17.64 49.95 L17.98 49.85 L18.32 49.81 L18.67 49.80 L19.00 49.84 L19.32 49.90 L19.62 49.98 L19.91 50.08 L20.20 50.20 L20.47 50.33 L20.74 50.49 L20.99 50.67 L21.22 50.88 L21.43 51.13 L21.58 51.40 L21.69 51.69Z" fill="#14171c"/><path d="M28.108 49.572V46.291H30.077V54.8H28.108V53.914Q27.703 54.455 27.216 54.707Q26.73 54.959 26.09 54.959Q24.958 54.959 24.23 54.059Q23.503 53.159 23.503 51.743Q23.503 50.327 24.23 49.427Q24.958 48.527 26.09 48.527Q26.724 48.527 27.214 48.782Q27.703 49.036 28.108 49.572ZM26.817 53.537Q27.446 53.537 27.777 53.077Q28.108 52.618 28.108 51.743Q28.108 50.868 27.777 50.409Q27.446 49.949 26.817 49.949Q26.194 49.949 25.863 50.409Q25.532 50.868 25.532 51.743Q25.532 52.618 25.863 53.077Q26.194 53.537 26.817 53.537ZM32.245 46.635H34.351V49.747H37.457V46.635H39.562V54.8H37.457V51.338H34.351V54.8H32.245ZM43.924 48.227V53.209H44.679Q45.97 53.209 46.65 52.569Q47.331 51.929 47.331 50.709Q47.331 49.495 46.653 48.861Q45.975 48.227 44.679 48.227ZM41.819 46.635H44.039Q45.898 46.635 46.809 46.9Q47.72 47.166 48.37 47.8Q48.945 48.352 49.223 49.074Q49.502 49.796 49.502 50.709Q49.502 51.634 49.223 52.358Q48.945 53.083 48.37 53.635Q47.714 54.27 46.795 54.535Q45.877 54.8 44.039 54.8H41.819Z" fill="#14171c"/></g></svg></b><span>AdHD<small class="ver" title="Version">v2.4.0</small></span></div>
+      <div id="logo"><b id="logoi"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#eef1f6"/><g transform="translate(0,-3) scale(.96)"><rect x="4" y="30" width="52" height="7.5" rx="2" fill="#ff8a3d" transform="rotate(-3 30 33.7)"/><rect x="4" y="43" width="52" height="7.5" rx="2" fill="#3b82f6" transform="rotate(3 30 46.7)"/><g transform="translate(5 0)"><path d="M14.20 58.01 L14.38 57.60 L14.56 57.20 L14.75 56.80 L14.93 56.39 L15.11 55.99 L15.29 55.59 L15.48 55.18 L15.66 54.78 L15.84 54.38 L16.03 53.97 L16.21 53.57 L16.39 53.17 L16.58 52.76 L16.76 52.36 L16.92 51.95 L17.07 51.53 L17.21 51.11 L17.36 50.69 L17.50 50.27 L17.65 49.85 L17.79 49.43 L17.94 49.01 L18.09 48.59 L18.23 48.17 L18.38 47.75 L18.53 47.34 L18.68 46.92 L18.82 46.50 L18.97 46.08 L19.12 45.66 L19.27 45.25 L19.42 44.83 L19.57 44.41 L19.73 43.99 L19.88 43.58 L20.03 43.16 L20.18 42.75 L20.33 42.33 L20.49 41.91 L20.64 41.50 L20.80 41.08 L20.95 40.67 L21.11 40.25 L21.27 39.84 L21.42 39.42 L21.58 39.01 L21.74 38.59 L21.90 38.18 L22.06 37.77 L22.22 37.35 L22.38 36.94 L22.54 36.53 L22.70 36.12 L22.86 35.70 L23.03 35.29 L23.19 34.88 L23.35 34.47 L23.52 34.06 L23.69 33.65 L24.08 33.33 L24.25 32.92 L24.41 32.51 L24.58 32.10 L24.74 31.69 L24.90 31.27 L25.06 30.86 L25.21 30.45 L25.37 30.03 L25.52 29.61 L25.68 29.20 L25.83 28.78 L25.99 28.37 L26.13 27.95 L26.27 27.52 L26.44 27.12 L26.60 26.70 L26.74 26.28 L26.90 25.87 L27.01 25.43 L27.15 25.01 L27.34 24.61 L27.49 24.19 L27.63 23.77 L27.76 23.35 L27.86 22.91 L28.04 22.51 L28.24 22.11 L28.35 21.67 L28.48 21.25 L28.60 20.82 L28.72 20.39 L28.94 20.00 L29.09 19.58 L29.17 19.14 L29.31 18.71 L29.42 18.28 L29.58 17.87 L29.81 17.48 L29.90 17.04 L29.97 16.59 L30.13 16.17 L30.25 15.74 L30.45 15.35 L30.64 14.95 L30.66 14.48 L30.76 14.04 L30.94 13.63 L31.08 13.21 L31.29 12.82 L31.41 12.39 L31.40 11.90 L31.56 11.49 L31.76 11.09 L31.89 10.67 L32.09 10.27 L32.12 9.80 L32.13 9.33 L32.38 8.95 L32.55 8.54 L32.67 8.11 L32.30 7.96 L31.93 8.28 L31.55 8.61 L31.34 9.00 L31.08 9.37 L30.89 9.77 L30.68 10.16 L30.27 10.47 L29.98 10.83 L29.80 11.23 L29.54 11.60 L29.35 12.00 L29.06 12.36 L28.68 12.68 L28.47 13.08 L28.28 13.48 L28.02 13.85 L27.81 14.24 L27.48 14.58 L27.17 14.93 L27.01 15.34 L26.79 15.73 L26.53 16.10 L26.28 16.48 L25.96 16.83 L25.73 17.21 L25.57 17.62 L25.32 18.00 L25.06 18.37 L24.81 18.74 L24.52 19.10 L24.34 19.51 L24.15 19.91 L23.88 20.28 L23.64 20.65 L23.40 21.03 L23.16 21.41 L22.99 21.82 L22.77 22.21 L22.50 22.58 L22.28 22.97 L22.06 23.35 L21.85 23.75 L21.66 24.15 L21.43 24.53 L21.20 24.91 L20.99 25.31 L20.78 25.70 L20.59 26.10 L20.39 26.50 L20.17 26.88 L19.97 27.28 L19.77 27.68 L19.58 28.08 L19.38 28.47 L19.19 28.87 L19.00 29.28 L18.81 29.68 L18.63 30.08 L18.45 30.49 L18.27 30.89 L18.33 31.39 L18.15 31.80 L17.98 32.21 L17.80 32.62 L17.63 33.02 L17.46 33.43 L17.28 33.84 L17.11 34.25 L16.94 34.66 L16.77 35.06 L16.60 35.47 L16.43 35.88 L16.26 36.29 L16.09 36.70 L15.92 37.11 L15.76 37.52 L15.59 37.93 L15.42 38.34 L15.26 38.75 L15.09 39.16 L14.93 39.58 L14.77 39.99 L14.60 40.40 L14.44 40.81 L14.28 41.22 L14.12 41.64 L13.95 42.05 L13.79 42.46 L13.63 42.88 L13.47 43.29 L13.31 43.70 L13.15 44.12 L13.00 44.53 L12.84 44.94 L12.68 45.36 L12.52 45.77 L12.37 46.19 L12.21 46.60 L12.05 47.02 L11.90 47.43 L11.74 47.85 L11.59 48.26 L11.43 48.68 L11.28 49.09 L11.12 49.51 L10.98 49.93 L10.87 50.36 L10.76 50.79 L10.64 51.23 L10.53 51.66 L10.42 52.09 L10.30 52.53 L10.19 52.96 L10.08 53.39 L9.97 53.83 L9.85 54.26 L9.74 54.69 L9.63 55.13 L9.52 55.56 L9.40 55.99 L9.25 56.48 L9.20 56.99 L9.25 57.49 L9.39 57.98 L9.63 58.43 L9.95 58.83 L10.34 59.15 L10.79 59.40 L11.28 59.55 L11.79 59.60 L12.29 59.55 L12.78 59.41 L13.23 59.17 L13.63 58.85 L13.95 58.46Z" fill="#14171c"/></g></g><g transform="translate(4.8 0) rotate(3 23 54.8)"><path d="M21.74 52.00 L21.72 52.31 L21.64 52.62 L21.51 52.90 L21.33 53.17 L21.11 53.41 L20.86 53.62 L20.58 53.79 L20.29 53.94 L19.98 54.06 L19.66 54.15 L19.33 54.20 L19.00 54.22 L18.67 54.20 L18.34 54.14 L18.03 54.04 L17.73 53.91 L17.46 53.74 L17.22 53.55 L17.01 53.33 L16.83 53.09 L16.68 52.84 L16.56 52.57 L16.46 52.29 L16.41 52.00 L16.39 51.70 L16.41 51.40 L16.48 51.09 L16.62 50.80 L16.80 50.53 L17.04 50.29 L17.32 50.10 L17.64 49.95 L17.98 49.85 L18.32 49.81 L18.67 49.80 L19.00 49.84 L19.32 49.90 L19.62 49.98 L19.91 50.08 L20.20 50.20 L20.47 50.33 L20.74 50.49 L20.99 50.67 L21.22 50.88 L21.43 51.13 L21.58 51.40 L21.69 51.69Z" fill="#14171c"/><path d="M28.108 49.572V46.291H30.077V54.8H28.108V53.914Q27.703 54.455 27.216 54.707Q26.73 54.959 26.09 54.959Q24.958 54.959 24.23 54.059Q23.503 53.159 23.503 51.743Q23.503 50.327 24.23 49.427Q24.958 48.527 26.09 48.527Q26.724 48.527 27.214 48.782Q27.703 49.036 28.108 49.572ZM26.817 53.537Q27.446 53.537 27.777 53.077Q28.108 52.618 28.108 51.743Q28.108 50.868 27.777 50.409Q27.446 49.949 26.817 49.949Q26.194 49.949 25.863 50.409Q25.532 50.868 25.532 51.743Q25.532 52.618 25.863 53.077Q26.194 53.537 26.817 53.537ZM32.245 46.635H34.351V49.747H37.457V46.635H39.562V54.8H37.457V51.338H34.351V54.8H32.245ZM43.924 48.227V53.209H44.679Q45.97 53.209 46.65 52.569Q47.331 51.929 47.331 50.709Q47.331 49.495 46.653 48.861Q45.975 48.227 44.679 48.227ZM41.819 46.635H44.039Q45.898 46.635 46.809 46.9Q47.72 47.166 48.37 47.8Q48.945 48.352 49.223 49.074Q49.502 49.796 49.502 50.709Q49.502 51.634 49.223 52.358Q48.945 53.083 48.37 53.635Q47.714 54.27 46.795 54.535Q45.877 54.8 44.039 54.8H41.819Z" fill="#14171c"/></g></svg></b><span>AdHD<small class="ver" title="Version">v2.5.0</small></span></div>
       <div id="navbtns"><button class="tb" id="navBack" aria-label="Back" title="Back (Alt+Left)"></button><button class="tb" id="navFwd" aria-label="Forward" title="Forward (Alt+Right)"></button></div>
       <div id="tabs"></div>
       <div id="topright">
         <div class="seg" id="themeseg"><button class="more" aria-label="Choose a theme" title="Choose a theme"></button></div>
-        <button class="btn hidden" id="addPageBtn" title="Add a page after this one (Alt+P)"></button>
-        <button class="btn" id="appsBtn" title="Your favourite apps"></button>
-        <button class="btn" id="aiBtn"></button>
+        <button class="btn hidden ibtn" id="addPageBtn" title="Add a page after this one (Alt+P)" aria-label="Add a page"></button>
+        <button class="btn ibtn" id="appsBtn" title="Favourite apps" aria-label="Favourite apps"></button>
+        <button class="btn ibtn" id="webBtn" title="Favourite web links" aria-label="Favourite web links"></button>
+        <button class="btn ibtn" id="foldBtn" title="Favourite folders" aria-label="Favourite folders"></button>
+        <button class="btn ibtn" id="aiBtn" title="Copy for AI" aria-label="Copy for AI"></button>
         <button class="btn pri" id="shareBtn"></button>
         <button class="tb" id="topHide" title="Hide the top bar" aria-label="Hide the top bar"></button>
       </div>
@@ -1007,7 +1147,7 @@ const DB={db:null,ok:true,mem:{notes:new Map(),blobs:new Map(),meta:new Map()},
 };
 
 /* ================= state ================= */
-const DEF={v:2,favApps:[],launcher:{ready:false,saved:'',stale:false},pdfUi:{side:'thumbs',dark:false,fit:'width',zoom:100},theme:'light',autosaveOn:true,autosaveSec:30,textW:'wide',font:'mono',zoom:100,railCollapsed:false,asideCollapsed:false,topCollapsed:false,asideTab:'outline',grid:false,
+const DEF={v:2,favApps:[],favWeb:[],favFolders:[],launcher:{ready:false,saved:'',stale:false},pdfUi:{side:'thumbs',dark:false,fit:'width',zoom:100},theme:'light',autosaveOn:true,autosaveSec:30,textW:'wide',font:'mono',zoom:100,railCollapsed:false,asideCollapsed:false,topCollapsed:false,asideTab:'outline',grid:false,
  cap:{v:2,code:'F8',mod:'',delay:0,copy:true,add:true,openDoodle:false,toast:true,hl:'#ffd23f',shape:'#ff3b30',mode:'region',method:(/Win/i.test(navigator.platform||'')?'snip':'share')},
  backup:{on:false,when:'autosave',keep:10},templates:[],histMax:500,spell:true,userDict:[],railSec:{},skin:'',railMode:'tree',railGroup:'date',railSort:'edited',railDesc:true};
 const S={notes:[],cur:null,tabs:[],view:'note',settings:JSON.parse(JSON.stringify(DEF)),editing:null,osel:null,sel:null,tree:{projects:[],folders:[]},focusMode:false,
@@ -1588,12 +1728,12 @@ function openMoveDialog(n){const m=modal({title:'Move “'+noteTitle(n)+'”',su
 function noteTitle(n){return n.title||'Untitled note';}
 function setScope(sc){S.lib.scope=sc;S.lib.q='';showLibrary();}
 function itemCtx(k,id,e){e.preventDefault();e.stopPropagation();showMenu(itemMenu(k,id),e.clientX,e.clientY);}
-function itemMenu(k,id){if(k==='pdf')return pdfMenu(id);if(k==='project'){const p=proj(id);return[{l:'New folder here',ic:'folderplus',fn:()=>newFolder('',id)},{l:'New note here',ic:'plus',fn:()=>newNoteIn({project:id})},{sep:1},{l:p.pinned?'Unpin':'Pin',ic:'pin',fn:()=>togglePin('project',id)},{l:'Rename or recolour',ic:'rename',fn:()=>renameItem('project',id)},{l:p.arch?'Restore from Archive':'Move to Archive',ic:'archive',fn:()=>setArch('project',id,!p.arch)},{sep:1},{l:'Delete project…',ic:'trash',fn:()=>deleteProject(id)}];}
- if(k==='folder'){const f=fold(id);return[{l:'New subfolder',ic:'folderplus',fn:()=>newFolder(id,f.project)},{l:'New note here',ic:'plus',fn:()=>newNoteIn({folder:id,project:f.project})},{sep:1},{l:f.pinned?'Unpin':'Pin',ic:'pin',fn:()=>togglePin('folder',id)},{l:'Rename',ic:'rename',fn:()=>renameItem('folder',id)},{l:'Move to root',ic:'up',fn:()=>moveItem({k:'folder',id},{k:'root'})},{l:f.arch?'Restore from Archive':'Move to Archive',ic:'archive',fn:()=>setArch('folder',id,!f.arch)},{sep:1},{l:'Delete folder…',ic:'trash',fn:()=>deleteFolder(id)}];}
+function itemMenu(k,id){if(k==='pdf')return pdfMenu(id);if(k==='project'){const p=proj(id);return[{l:'New folder here',ic:'folderplus',fn:()=>newFolder('',id)},{l:'New note here',ic:'plus',fn:()=>newNoteIn({project:id})},{sep:1},{l:p.pinned?'Unpin':'Pin',ic:'pin',fn:()=>togglePin('project',id)},{l:'Rename or recolour',ic:'rename',fn:()=>renameItem('project',id)},{l:p.arch?'Restore from Archive':'Move to Archive',ic:'archive',fn:()=>setArch('project',id,!p.arch)},...lkMenuItems('project',id),{sep:1},{l:'Delete project…',ic:'trash',fn:()=>deleteProject(id)}];}
+ if(k==='folder'){const f=fold(id);return[{l:'New subfolder',ic:'folderplus',fn:()=>newFolder(id,f.project)},{l:'New note here',ic:'plus',fn:()=>newNoteIn({folder:id,project:f.project})},{sep:1},{l:f.pinned?'Unpin':'Pin',ic:'pin',fn:()=>togglePin('folder',id)},{l:'Rename',ic:'rename',fn:()=>renameItem('folder',id)},{l:'Move to root',ic:'up',fn:()=>moveItem({k:'folder',id},{k:'root'})},{l:f.arch?'Restore from Archive':'Move to Archive',ic:'archive',fn:()=>setArch('folder',id,!f.arch)},...lkMenuItems('folder',id),{sep:1},{l:'Delete folder…',ic:'trash',fn:()=>deleteFolder(id)}];}
  const n=S.notes.find(x=>x.id===id);return[{l:'Open',ic:'notes',fn:()=>openNote(n)},{l:'Open in a new tab',ic:'external',fn:()=>openInNewTab(n.id)},{l:'Add a page',ic:'page',fn:()=>{openNote(n).then(()=>addPage());}},{l:n.pinned?'Unpin':'Pin',ic:'pin',fn:()=>togglePin('note',id)},{l:'Move to…',ic:'folder',fn:()=>openMoveDialog(n)},{l:'Duplicate',ic:'copy',fn:()=>dupNote(n)},{l:n.arch?'Restore from Archive':'Move to Archive',ic:'archive',fn:()=>setArch('note',id,!n.arch)},{sep:1},{l:n.trashed?'Restore':'Move to trash',ic:'trash',fn:()=>{n.trashed=!n.trashed;if(n.trashed){S.tabs=S.tabs.filter(i=>i!==id);if(S.cur===n){S.cur=null;const nx=S.tabs[S.tabs.length-1];if(nx)openNoteById(nx);else showLibrary();}}saveQuiet(n);refreshAll();}}];}
 async function dupNote(n){syncEditor();const c=JSON.parse(JSON.stringify(recOf(n)));c.id=uid();c.title=noteTitle(n)+' (copy)';c.created=c.updated=Date.now();c.hist={steps:[],idx:-1,marks:[]};c.snaps=[];c.pinned=false;c.objs.forEach(o=>{o.id=uid();});S.notes.push(c);await saveQuiet(c);await openNote(c);}
 function trow(o){const row=h('div',Object.assign({class:'trow'+(o.on?' on':''),role:'treeitem',tabindex:'0',style:'padding-left:'+(6+o.depth*14)+'px',onclick:o.onclick,oncontextmenu:o.onctx,onkeydown:e=>{if(e.key==='Enter')o.onclick(e);}},dndProps(o.drag,o.drop)));
- row.append(o.hasKids?h('button',{class:'tw'+(o.open?' open':''),'aria-label':o.open?'Collapse':'Expand',onclick:e=>{e.stopPropagation();o.toggle();}},icon('chevr',12)):h('span',{class:'tw sp'}),h('span',{class:'ti ti-'+o.ic,style:o.color?'color:'+o.color:''},icon(o.ic,17)),h('span',{class:'t'},o.label),o.pinned?h('span',{class:'pn',title:'Pinned'},icon('pin',12)):null,o.count!=null?h('span',{class:'cnt'},o.count):null);return row;}
+ row.append(o.hasKids?h('button',{class:'tw'+(o.open?' open':''),'aria-label':o.open?'Collapse':'Expand',onclick:e=>{e.stopPropagation();o.toggle();}},icon('chevr',12)):h('span',{class:'tw sp'}),h('span',{class:'ti ti-'+o.ic,style:o.color?'color:'+o.color:''},icon(o.ic,17)),h('span',{class:'t'},o.label),o.link?lkBadge(o.link[0],o.link[1]):null,o.pinned?h('span',{class:'pn',title:'Pinned'},icon('pin',12)):null,o.count!=null?h('span',{class:'cnt'},o.count):null);return row;}
 function renderRail(){const r=$('#rail');if(!r)return;const col=S.settings.railCollapsed;r.classList.toggle('collapsed',col);r.classList.toggle('mail',!col&&S.settings.railMode==='mail');r.onclick=railBlankClick;const _oldList=$('#rlist'),_keepScroll=_oldList?_oldList.scrollTop:0;r.innerHTML='';r.append(h('button',{class:'railedge',tabindex:'-1',title:S.settings.railCollapsed?'Click to open the left pane':'Click to collapse the left pane','aria-label':S.settings.railCollapsed?'Open the left pane':'Collapse the left pane',onclick:e=>{e.stopPropagation();toggleRail();}}));
  if(col){const B=(ic,t,fn,on)=>h('button',{class:'tb rl2'+(on?' on':''),title:t,'aria-label':t,onclick:fn},icon(ic,18));
   r.append(B('mind','MindSpace',openMindSpace,S.view==='note'&&!!(S.cur&&S.cur.ms)),B('home','Library home',()=>setScope({t:'home'}),S.view==='library'&&S.lib.scope.t==='home'),B('plus','New note',()=>newNote()),B('project','Projects',()=>setScope({t:'home'})),B('pin','Pinned',()=>setScope({t:'pinned'})),B('notes','All notes',()=>setScope({t:'all'})),B('trash','Trash',()=>setScope({t:'trash'})),B('folder','Files and folders',()=>openExplorer(),S.view==='library'&&S.lib.scope.t==='explorer'),h('div',{style:'flex:1'}),B('chevr','Expand library',()=>{S.settings.railCollapsed=false;saveSettings();renderRail();layoutSheet();}));return;}
@@ -1610,17 +1750,17 @@ function renderRailList(){const list=$('#rlist');if(!list)return;list.innerHTML=
   return row;};
  if(q){list.append(h('div',{class:'sec'},h('span',{class:'sl'},'Matching notes')));const ms=live.filter(n=>(noteTitle(n)+' '+noteText(n)).toLowerCase().includes(q)).sort((a,b)=>b.updated-a.updated).slice(0,50);if(!ms.length)list.append(h('div',{class:'rempty'},'No notes match.'));ms.forEach(n=>list.append(noteRow(n,0)));livePdfs().filter(p=>p.name.toLowerCase().includes(q)).slice(0,20).forEach(p=>list.append(pdfRow(p,0)));return;}
  const pinned=[...S.tree.projects.filter(p=>p.pinned&&!p.arch).map(p=>({k:'project',p})),...S.tree.folders.filter(f=>f.pinned&&!f.arch).map(f=>({k:'folder',f})),...live.filter(n=>n.pinned).map(n=>({k:'note',n})),...livePdfs().filter(p=>p.pinned).map(p=>({k:'pdf',p}))];
- if(pinned.length){list.append(secHead('pinned','Pinned',pinned.length));if(!isCol('pinned'))pinned.forEach(x=>{if(x.k==='project')list.append(trow({depth:0,ic:'project',color:x.p.color,label:x.p.name,onclick:()=>setScope({t:'project',id:x.p.id}),onctx:e=>itemCtx('project',x.p.id,e),pinned:true}));else if(x.k==='folder')list.append(trow({depth:0,ic:'folder',label:x.f.name,onclick:()=>setScope({t:'folder',id:x.f.id}),onctx:e=>itemCtx('folder',x.f.id,e),pinned:true}));else if(x.k==='pdf')list.append(pdfRow(x.p,0));else list.append(noteRow(x.n,0));});}
+ if(pinned.length){list.append(secHead('pinned','Pinned',pinned.length));if(!isCol('pinned'))pinned.forEach(x=>{if(x.k==='project')list.append(trow({depth:0,ic:'project',color:x.p.color,link:['project',x.p.id],label:x.p.name,onclick:()=>setScope({t:'project',id:x.p.id}),onctx:e=>itemCtx('project',x.p.id,e),pinned:true}));else if(x.k==='folder')list.append(trow({depth:0,ic:'folder',link:['folder',x.f.id],label:x.f.name,onclick:()=>setScope({t:'folder',id:x.f.id}),onctx:e=>itemCtx('folder',x.f.id,e),pinned:true}));else if(x.k==='pdf')list.append(pdfRow(x.p,0));else list.append(noteRow(x.n,0));});}
  list.append(trow({depth:0,ic:'mind',label:'MindSpace',on:S.view==='note'&&!!(S.cur&&S.cur.ms),onclick:openMindSpace}));
  list.append(secHead('library','Library'));
  if(!isCol('library'))list.append(trow({depth:0,ic:'home',label:'Library home',on:inLib&&sc.t==='home',onclick:()=>setScope({t:'home'}),drop:{k:'root'}}),trow({depth:0,ic:'notes',label:'All notes',count:live.length,on:inLib&&sc.t==='all',onclick:()=>setScope({t:'all'})}));
  const folderRows=(parent,project,d)=>{kidsOf(parent,project).forEach(f=>{const subs=kidsOf(f.id,project),ns=notesIn(project,f.id).sort((a,b)=>b.updated-a.updated),pds=pdfsIn(project,f.id);const has=subs.length||ns.length||pds.length;
-   list.append(trow({depth:d,ic:'folder',label:f.name,count:countDeep(f.id),pinned:f.pinned,on:inLib&&sc.t==='folder'&&sc.id===f.id,hasKids:has,open:f.open,toggle:()=>{f.open=!f.open;saveTree();renderRailList();},onclick:()=>setScope({t:'folder',id:f.id}),onctx:e=>itemCtx('folder',f.id,e),drag:{k:'folder',id:f.id},drop:{k:'folder',id:f.id}}));
+   list.append(trow({depth:d,ic:'folder',link:['folder',f.id],label:f.name,count:countDeep(f.id),pinned:f.pinned,on:inLib&&sc.t==='folder'&&sc.id===f.id,hasKids:has,open:f.open,toggle:()=>{f.open=!f.open;saveTree();renderRailList();},onclick:()=>setScope({t:'folder',id:f.id}),onctx:e=>itemCtx('folder',f.id,e),drag:{k:'folder',id:f.id},drop:{k:'folder',id:f.id}}));
    if(f.open){folderRows(f.id,project,d+1);ns.forEach(n=>list.append(noteRow(n,d+1)));pds.forEach(pd=>list.append(pdfRow(pd,d+1)));}});};
  list.append(secHead('projects','Projects',S.tree.projects.length,h('button',{class:'tb','data-tip':'New project','aria-label':'New project',onclick:newProject},icon('plus',14))));
  if(!isCol('projects')){if(!S.tree.projects.length)list.append(h('div',{class:'rempty'},'No projects yet. A project holds many folders and notes.'));
   S.tree.projects.filter(p=>!p.arch).slice().sort((a,b)=>(b.pinned?1:0)-(a.pinned?1:0)||a.name.localeCompare(b.name)).forEach(p=>{const subs=kidsOf('',p.id),ns=notesIn(p.id,'').sort((a,b)=>b.updated-a.updated),pds=pdfsIn(p.id,'');
-   list.append(trow({depth:0,ic:'project',color:p.color,label:p.name,count:live.filter(n=>n.project===p.id).length+livePdfs().filter(x=>x.project===p.id).length,pinned:p.pinned,on:inLib&&sc.t==='project'&&sc.id===p.id,hasKids:subs.length||ns.length||pds.length,open:p.open,toggle:()=>{p.open=!p.open;saveTree();renderRailList();},onclick:()=>setScope({t:'project',id:p.id}),onctx:e=>itemCtx('project',p.id,e),drop:{k:'project',id:p.id}}));
+   list.append(trow({depth:0,ic:'project',color:p.color,link:['project',p.id],label:p.name,count:live.filter(n=>n.project===p.id).length+livePdfs().filter(x=>x.project===p.id).length,pinned:p.pinned,on:inLib&&sc.t==='project'&&sc.id===p.id,hasKids:subs.length||ns.length||pds.length,open:p.open,toggle:()=>{p.open=!p.open;saveTree();renderRailList();},onclick:()=>setScope({t:'project',id:p.id}),onctx:e=>itemCtx('project',p.id,e),drop:{k:'project',id:p.id}}));
    if(p.open){folderRows('',p.id,1);ns.forEach(n=>list.append(noteRow(n,1)));pds.forEach(pd=>list.append(pdfRow(pd,1)));}});}
  list.append(secHead('folders','Folders',S.tree.folders.filter(f=>!f.project).length,h('button',{class:'tb','data-tip':'New folder','aria-label':'New folder',onclick:()=>newFolder('','')},icon('plus',14))));
  if(!isCol('folders')){if(!kidsOf('','').length)list.append(h('div',{class:'rempty'},'No folders yet.'));folderRows('','',0);}
@@ -1642,9 +1782,10 @@ function showLibrary(){flushTyping();syncEditor();if(S.cur&&S.dirty)persist('aut
 function scopeNotes(sc){let l=S.notes.filter(n=>sc.t==='trash'?n.trashed:!n.trashed);if(sc.t==='pinned')l=l.filter(n=>n.pinned);else if(sc.t==='folder')l=l.filter(n=>n.folder===sc.id);else if(sc.t==='project')l=l.filter(n=>n.project===sc.id&&!n.folder);else if(sc.t==='tag')l=l.filter(n=>n.tags.includes(sc.v));else if(sc.t==='home')l=l.filter(n=>!n.project&&!n.folder);return l;}
 function crumbs(sc){const out=[{l:'Library',sc:{t:'home'},drop:{k:'root'}}];if(sc.t==='all')out.push({l:'All notes'});else if(sc.t==='pinned')out.push({l:'Pinned'});else if(sc.t==='trash')out.push({l:'Trash'});else if(sc.t==='tag')out.push({l:'#'+sc.v});else if(sc.t==='project'){const p=proj(sc.id);if(p)out.push({l:p.name});}
  else if(sc.t==='folder'){const f=fold(sc.id);if(f){if(f.project&&proj(f.project))out.push({l:proj(f.project).name,sc:{t:'project',id:f.project},drop:{k:'project',id:f.project}});const chain=[];let c=f;while(c){chain.unshift(c);c=c.parent?fold(c.parent):null;}chain.forEach((x,i)=>out.push({l:x.name,sc:i<chain.length-1?{t:'folder',id:x.id}:null,drop:{k:'folder',id:x.id}}));}}return out;}
-function renderLibrary(){const lv=$('#libview');lv.innerHTML='';const L=S.lib;const sc=L.scope;
+function renderLibrary(){const lv=$('#libview');lv.innerHTML='';lv.classList.remove('lfx');const L=S.lib;const sc=L.scope;
  if((sc.t==='folder'&&!fold(sc.id))||(sc.t==='project'&&!proj(sc.id))){L.scope=sc=({t:'home'});}
  if(sc.t==='explorer'){renderExplorer(lv);return;}
+ if(sc.t==='files'){renderLinkFiles(lv);return;}
  const searching=!!L.q;let list=searching?liveNotes():scopeNotes(sc);const hits={};if(searching)list=list.filter(n=>{const r=searchHit(n,L.q);if(r)hits[n.id]=r;return !!r;});
  if(L.filter==='code')list=list.filter(n=>n.objs.some(o=>o.t==='code'));if(L.filter==='files')list=list.filter(n=>n.objs.some(o=>o.t==='file'));if(L.filter==='check')list=list.filter(n=>/data-c=/.test(n.h));if(L.filter==='sticky')list=list.filter(n=>n.objs.some(o=>o.t==='sticky'));if(L.filter==='recent')list=list.filter(n=>Date.now()-n.updated<30*864e5);
  list.sort((a,b)=>(b.pinned?1:0)-(a.pinned?1:0)||(L.sort==='title'?noteTitle(a).localeCompare(noteTitle(b)):L.sort==='created'?b.created-a.created:b.updated-a.updated));
@@ -1652,7 +1793,7 @@ function renderLibrary(){const lv=$('#libview');lv.innerHTML='';const L=S.lib;co
  lv.append(h('div',{class:'crumbs'},crumbs(sc).map((c,i)=>[i?h('span',{class:'cs'},icon('chevr',12)):null,h(c.sc?'button':'span',Object.assign({class:'cr'+(c.sc?' lnk':'')},c.sc?{onclick:()=>setScope(c.sc)}:{},c.drop?dndProps(null,c.drop):{}),c.l)])));
  lv.append(h('div',{class:'ltop'},h('label',{class:'lq'},icon('search'),q),h('div',{class:'seg'},h('button',{class:L.mode==='grid'?'on':'','aria-label':'Grid view',onclick:()=>{L.mode='grid';renderLibrary();}},icon('grid',14)),h('button',{class:L.mode==='list'?'on':'','aria-label':'List view',onclick:()=>{L.mode='list';renderLibrary();}},icon('list',14))),
   h('select',{class:'btn','aria-label':'Sort',onchange:e=>{L.sort=e.target.value;renderLibrary();}},[['edited','Last edited'],['created','Newest'],['title','Title']].map(([v,t])=>h('option',{value:v,selected:L.sort===v},t))),
-  h('button',{class:'btn',onclick:()=>newFolder(sc.t==='folder'?sc.id:'',sc.t==='project'?sc.id:(sc.t==='folder'&&fold(sc.id)?fold(sc.id).project:''))},icon('folderplus',14),'New folder'),sc.t==='home'?h('button',{class:'btn',onclick:newProject},icon('project',14),'New project'):null,h('button',{class:'btn',title:'Add a PDF to study and mark up',onclick:()=>pdfImportDialog(sc)},icon('pdf',14),'Add PDF'),h('button',{class:'btn pri',onclick:()=>newNote()},icon('plus',14),'New note')));
+  h('button',{class:'btn',onclick:()=>newFolder(sc.t==='folder'?sc.id:'',sc.t==='project'?sc.id:(sc.t==='folder'&&fold(sc.id)?fold(sc.id).project:''))},icon('folderplus',14),'New folder'),sc.t==='home'?h('button',{class:'btn',onclick:newProject},icon('project',14),'New project'):null,h('button',{class:'btn',title:'Add a PDF to study and mark up',onclick:()=>pdfImportDialog(sc)},icon('pdf',14),'Add PDF'),(sc.t==='folder'||sc.t==='project')?h('button',{class:'btn',title:effLink(sc.t,sc.id)?'Browse and manage the linked folder on your PC':'Link a folder on your PC to this '+sc.t,onclick:()=>effLink(sc.t,sc.id)?lkOpenFiles(sc.t,sc.id):lkDialog(sc.t,sc.id)},icon(effLink(sc.t,sc.id)?'folder':'link',14),effLink(sc.t,sc.id)?'Files':'Link folder'):null,h('button',{class:'btn pri',onclick:()=>newNote()},icon('plus',14),'New note')));
  lv.append(h('div',{style:'display:flex;align-items:center;gap:8px;margin-top:12px;flex-wrap:wrap'},[['all','All'],['code','Has code'],['files','Has files'],['sticky','Has stickies'],['check','Has checklist'],['recent','Last 30 days']].map(([k,t])=>h('span',{class:'chip'+(L.filter===k?' on':''),style:'cursor:pointer',onclick:()=>{L.filter=k;renderLibrary();}},t)),h('span',{style:'margin-left:auto;font-size:13px;color:var(--mute)'},list.length+(list.length===1?' note':' notes')+(searching?' match “'+L.q+'” in the whole library':''))));
  if(sc.t==='trash'&&(list.length||S.pdfs.some(p=>p.trashed)))lv.append(h('div',{style:'margin-top:12px'},h('button',{class:'btn danger',onclick:emptyTrash},icon('trash',14),'Empty trash')));
  // tiles for projects and folders
@@ -1671,7 +1812,7 @@ function renderLibrary(){const lv=$('#libview');lv.innerHTML='';const L=S.lib;co
    hit?h('div',{class:'sn'},hit.before,h('mark',null,hit.hit),hit.after):null,hit?h('div',null,h('span',{class:'chip soft'},'Found in '+hit.kind)):null,
    sc.t==='trash'?h('div',{style:'display:flex;gap:6px'},h('button',{class:'btn sm',onclick:e=>{e.stopPropagation();n.trashed=false;saveQuiet(n);renderLibrary();renderRail();}},'Restore'),h('button',{class:'btn sm danger',onclick:async e=>{e.stopPropagation();if(await confirmDlg('Delete forever?','This note will be permanently deleted.','Delete',true)){await deleteForever(n);renderLibrary();renderRail();}}},'Delete forever')):null));grid.append(card);}
  lv.append(grid);}
-function tile(k,id,name,color,sub,pinned){return h('div',Object.assign({class:'tile',role:'button',tabindex:'0',onclick:()=>setScope({t:k,id}),oncontextmenu:e=>itemCtx(k,id,e),onkeydown:e=>{if(e.key==='Enter')setScope({t:k,id});}},dndProps(k==='folder'?{k:'folder',id}:null,{k,id})),h('span',{class:'ti',style:color?'color:'+color:''},icon(k==='project'?'project':'folder',22)),h('div',{style:'min-width:0'},h('div',{class:'tn'},name),h('div',{class:'ts'},sub)),pinned?h('span',{class:'pn'},icon('pin',13)):null);}
+function tile(k,id,name,color,sub,pinned){return h('div',Object.assign({class:'tile',role:'button',tabindex:'0',onclick:()=>setScope({t:k,id}),oncontextmenu:e=>itemCtx(k,id,e),onkeydown:e=>{if(e.key==='Enter')setScope({t:k,id});}},dndProps(k==='folder'?{k:'folder',id}:null,{k,id})),h('span',{class:'ti',style:color?'color:'+color:''},icon(k==='project'?'project':'folder',22)),h('div',{style:'min-width:0'},h('div',{class:'tn'},name),h('div',{class:'ts'},sub)),pinned?h('span',{class:'pn'},icon('pin',13)):null,lkBadge(k,id));}
 async function emptyTrash(){const t=S.notes.filter(n=>n.trashed),tp=S.pdfs.filter(p=>p.trashed);if(!t.length&&!tp.length)return;if(!(await confirmDlg('Empty trash?','Delete '+(t.length+tp.length)+' item(s) forever? This cannot be undone.','Delete all',true)))return;for(const n of t)await deleteForever(n);for(const p of tp)await pdfDeleteForever(p);renderLibrary();renderRail();}
 async function deleteForever(n){S.notes=S.notes.filter(x=>x!==n);S.tabs=S.tabs.filter(i=>i!==n.id);await DB.del('notes',n.id);const scan=(s,set)=>{const re=/"(?:img|fid)":"([a-z0-9]+)"/g;let m;while((m=re.exec(s)))set.add(m[1]);};const used=new Set(),mine=new Set();
  const all=x=>{const set=x===n?mine:used;scan(JSON.stringify(x.objs),set);x.snaps.forEach(sn=>scan(sn.o,set));x.hist.steps.forEach(st=>{scan(st.d,set);scan(st.a,set);});};S.notes.forEach(all);all(n);S.settings.templates.forEach(t=>scan(JSON.stringify(t.objs||[]),used));
@@ -1681,7 +1822,7 @@ async function deleteForever(n){S.notes=S.notes.filter(x=>x!==n);S.tabs=S.tabs.f
 async function openNoteById(id){const n=S.notes.find(x=>x.id===id);if(!n){toast('That note no longer exists');return;}await openNote(n);}
 async function openNote(n){if(S.cur&&S.view==='note'){flushTyping();syncEditor();if(S.dirty)await persist('auto');}closeFind();S.cur=n;S.editing=null;S.sel=null;S.osel=null;S.tbl=null;if(!S.tabs.includes(n.id))S.tabs.push(n.id);await prefetchObjs(n);S.view='note';S.dirty=false;S.lastAuto=Date.now();
  $('#libview').classList.add('hidden');pdfHide();$('#noteview').classList.remove('hidden');document.body.classList.toggle('ms',!!n.ms);pagesOf(n);renumberPages(n);const _cp=n.pages[n.pi];n.h=_cp.h||emptyDoc;n.objs=_cp.objs||[];$('#title').value=n.title;EDI().innerHTML=n.h||emptyDoc;EDI().dataset.nid=n.id;initEditor();initObjLayer();renderObjects();applySettings();renderGhosts();layoutSheet();if(anchorAll())markDirty();histInit(n);renderMeta();renderMsBar();renderTabs();renderRail();renderFmtbar();refreshAside();updateStatus();$('#canvas').scrollTop=0;$('#canvas').scrollLeft=0;navPush({v:'note',id:n.id});}
-async function newNote(html,title,extra,objs){const n=newNoteObj(title||'',html,objs,extra);const sc=S.lib.scope;if(!extra||(extra.project==null&&extra.folder==null)){if(sc.t==='folder'&&fold(sc.id)){n.folder=sc.id;n.project=fold(sc.id).project||'';}else if(sc.t==='project'){n.project=sc.id;}}S.notes.push(n);await saveQuiet(n);await openNote(n);if(!html)$('#title').focus();else{EDI().focus();}return n;}
+async function newNote(html,title,extra,objs){const n=newNoteObj(title||'',html,objs,extra);const sc=lkScopeAsLib(S.lib.scope);if(!extra||(extra.project==null&&extra.folder==null)){if(sc.t==='folder'&&fold(sc.id)){n.folder=sc.id;n.project=fold(sc.id).project||'';}else if(sc.t==='project'){n.project=sc.id;}}S.notes.push(n);await saveQuiet(n);await openNote(n);if(!html)$('#title').focus();else{EDI().focus();}return n;}
 function newNoteIn(loc){return newNote(null,'',loc);}
 async function closeTab(id){const n=S.notes.find(x=>x.id===id);if(n&&S.cur===n&&S.view==='note'){flushTyping();syncEditor();await persist('auto');}S.tabs=S.tabs.filter(i=>i!==id);if(S.cur&&S.cur.id===id){const nx=S.tabs[S.tabs.length-1];S.cur=null;if(nx)openNoteById(nx);else showLibrary();}else renderTabs();}
 async function trashCurrent(){if(!S.cur)return;if(!(await confirmDlg('Move to trash?','“'+noteTitle(S.cur)+'” goes to the trash. You can restore it from there.','Move to trash')))return;const n=S.cur;flushTyping();syncEditor();n.trashed=true;await saveQuiet(n);S.tabs=S.tabs.filter(i=>i!==n.id);S.cur=null;const nx=S.tabs[S.tabs.length-1];if(nx)openNoteById(nx);else showLibrary();toast('Moved to trash',{actions:[{l:'Undo',fn:()=>{n.trashed=false;saveQuiet(n);openNote(n);}}]});}
@@ -1694,7 +1835,7 @@ function renderMeta(){const m=$('#meta');if(!m)return;m.innerHTML='';const n=S.c
 /* ================= right pane ================= */
 function applyAside(){const a=$('#aside');if(!a)return;a.classList.toggle('collapsed',!!S.settings.asideCollapsed);layoutSheet();}
 function backlinks(){const n=S.cur;const out={linked:[],mention:[]};if(!n)return out;const id=n.id,tl=(n.title||'').toLowerCase();for(const o of S.notes){if(o===n||o.trashed)continue;if(o.h.includes('data-note="'+id+'"')){out.linked.push({n:o,snip:noteText(o).slice(0,110)});}else if(tl.length>=3&&noteText(o).toLowerCase().includes(tl))out.mention.push({n:o,snip:noteText(o).slice(0,110)});}return out;}
-function refreshAside(){refreshAside_o();decorateAside();}
+function refreshAside(){refreshAside_o();decorateAside();if(typeof asideEdge==='function')asideEdge();}
 function refreshAside_o(){const a=$('#aside');if(!a)return;const _ob=$('.abody',a);const _sc=_ob?_ob.scrollTop:0;a.innerHTML='';const inNote=!!(S.cur&&S.view==='note');if(!inNote&&!S.settings.asideCollapsed){a.append(h('div',{class:'atabs'},h('button',{class:'atab on'},'Archive'),h('span',{style:'flex:1'}),h('button',{class:'tb',title:'Collapse right pane','aria-label':'Collapse right pane',onclick:()=>{S.settings.asideCollapsed=true;saveSettings();applyAside();refreshAside();}},icon('panelr'))));const bd=h('div',{class:'abody'});a.append(bd);asideArchive(bd);return;}
  if(!inNote)return;const st=S.settings;
  if(st.asideCollapsed){a.append(h('button',{class:'tb rl2',title:'Expand right pane','aria-label':'Expand right pane',onclick:()=>{st.asideCollapsed=false;saveSettings();applyAside();refreshAside();}},icon('panelr',18)),...[['outline','list','Outline'],['objects','objects','Objects'],['style','style','Style'],['archive','archive','Archive']].map(([k,ic,t])=>h('button',{class:'tb rl2',title:t,'aria-label':t,onclick:()=>{st.asideTab=k;st.asideCollapsed=false;saveSettings();applyAside();refreshAside();}},icon(ic,18))));return;}
@@ -1787,8 +1928,8 @@ function toggleFocus(){S.focusMode=!S.focusMode;applySettings();if(!S.focusMode)
 
 /* ================= adding pictures ================= */
 async function ensureNoteOpen(){if(!S.cur)await newNote();else if(S.view!=='note')await openNote(S.cur);}
-async function addImages(files,spot,quiet){await ensureNoteOpen();spot=spot||S.nextSpot;S.nextSpot=null;let k=0,first=null;
- for(const f of files){try{const r=await fileToImageBlob(f);const id=await addBlob(r.blob,'image');await imgEl(id).then(i=>{S.imgRes[id]=i;});const w=Math.min(r.nw,480),hh=Math.round(w*r.nh/r.nw);const sp=spot?{x:spot.x+k*18,y:spot.y+k*18}:freeSpot(w,hh+10);const o=addObject({t:'image',img:id,nw:r.nw,nh:r.nh,w,h:hh,objs:[],sz:r.blob.size,cap:''},sp);first=first||o;k++;}catch(e){console.error(e);toast('Could not read that image');}}
+async function addImages(files,spot,quiet){await ensureNoteOpen();const snapJob=quiet?snapBegin():null;spot=spot||S.nextSpot;S.nextSpot=null;let k=0,first=null;
+ for(const f of files){try{const r=await fileToImageBlob(f);if(snapJob)snapWrite(snapJob,r.blob);const id=await addBlob(r.blob,'image');await imgEl(id).then(i=>{S.imgRes[id]=i;});const w=Math.min(r.nw,480),hh=Math.round(w*r.nh/r.nw);const sp=spot?{x:spot.x+k*18,y:spot.y+k*18}:freeSpot(w,hh+10);const o=addObject({t:'image',img:id,nw:r.nw,nh:r.nh,w,h:hh,objs:[],sz:r.blob.size,cap:''},sp);first=first||o;k++;}catch(e){console.error(e);toast('Could not read that image');}}
  if(first){commit(quiet?'Captured screen':'Added picture');const el=elOf(first.id);if(el)el.scrollIntoView({block:'nearest',inline:'nearest',behavior:'smooth'});}return first;}
 
 /* ================= screen capture ================= */
@@ -1858,13 +1999,13 @@ function openCaptureOverlay(src){const cap=S.settings.cap;const W=src.width,H=sr
   else if((e.key==='Delete'||e.key==='Backspace')&&S.sel&&S.sel.bid==='cap'&&cb){e.preventDefault();e.stopPropagation();cb.objs=cb.objs.filter(o=>o.id!==S.sel.oid);S.sel=null;capPush();paintCap();}}
  document.addEventListener('keydown',key,true);window.addEventListener('resize',layout);
  function close(){document.removeEventListener('keydown',key,true);window.removeEventListener('resize',layout);ov.remove();S.sel=null;}
- function finish(){if(!cb){toast('Drag to choose an area first');return;}
+ function finish(){if(!cb){toast('Drag to choose an area first');return;}const snapJob=snapBegin();
   const flat=document.createElement('canvas');flat.width=cb.nw;flat.height=cb.nh;const fx=flat.getContext('2d');fx.drawImage(cropC,0,0);cb.objs.forEach(o=>drawObj(fx,o,cropC,cb));const pngP=canvasBlob(flat,'image/png');
   let clipP;try{clipP=navigator.clipboard.write([new ClipboardItem({'image/png':pngP})]).then(()=>true,()=>false);}catch(e){clipP=Promise.resolve(false);}
   const objs=JSON.parse(JSON.stringify(cb.objs)),nw=cb.nw,nh=cb.nh,cc=cropC;close();
   (async()=>{let o=null;if(cap.add){await ensureNoteOpen();let ob=await canvasBlob(cc,'image/png');if(ob.size>1500000){const c2=document.createElement('canvas');c2.width=nw;c2.height=nh;const x2=c2.getContext('2d');x2.fillStyle='#fff';x2.fillRect(0,0,nw,nh);x2.drawImage(cc,0,0);ob=await canvasBlob(c2,'image/jpeg',.92);}
    const id=await addBlob(ob,'capture');await imgEl(id).then(i=>{S.imgRes[id]=i;});objs.forEach(q=>q.id=uid());const w=Math.min(nw,480),hh=Math.round(w*nh/nw);o=addObject({t:'image',img:id,nw,nh,w,h:hh,objs,sz:ob.size,cap:''},freeSpot(w,hh+10));commit('Captured screen');const el=elOf(o.id);if(el)el.scrollIntoView({block:'nearest',behavior:'smooth'});}
-   const copied=await clipP;
+   const copied=await clipP;if(snapJob)snapWrite(snapJob,pngP);
    if(cap.toast){toast('',{ok:true,title:copied?'Copied to clipboard':'Capture added to the note',sub:(cap.add?'Added to your note. ':'')+(copied?'Press Ctrl+V in Teams, Outlook or Word to paste it.':'The browser blocked the clipboard copy. Use Copy picture on the image.'),
     actions:[o?{l:'Doodle',p:1,fn:()=>{S.editing=o.id;S.sel=null;selectObj(o.id);renderObjects();}}:null,{l:'Copy again',fn:async()=>{try{await navigator.clipboard.write([new ClipboardItem({'image/png':await pngP})]);toast('Copied again');}catch(e){toast('Could not copy');}}},o?{l:'Undo',fn:undo}:null].filter(Boolean)});}
    if(cap.openDoodle&&o){S.editing=o.id;renderObjects();}})();}
@@ -1941,7 +2082,9 @@ const SKINS=[
 {id:'tea',l:'Tea house',base:'light',c:['#f1ebdc','#2f4a3a','#b3362b']},
 {id:'washi',l:'Washi',base:'light',c:['#f4efe3','#2a3f6b','#b4431a']},
 {id:'matcha',l:'Strawberry matcha',base:'light',c:['#fbeaee','#c92f53','#e3efd3']},
-{id:'terminal',l:'Terminal',base:'dark',c:['#0a0c0a','#35d07f','#ffb000']}];
+{id:'terminal',l:'Terminal',base:'dark',c:['#0a0c0a','#35d07f','#ffb000']},
+{id:'liquid',l:'Liquid Glass',base:'light',c:['#e9f1ff','#007aff','#ffffff']},
+{id:'liquidnight',l:'Liquid Glass night',base:'dark',c:['#0c1226','#0a84ff','#2a2f55']}];
 function curSkinId(){const st=S.settings;return st.skin||st.theme;}
 function setSkin(id){const k=SKINS.find(x=>x.id===id)||SKINS[0];const st=S.settings;st.theme=k.base;st.skin=(id==='light'||id==='dark')?'':id;saveSettings();applySettings();}
 function themeMenu(anchor){popMenu(anchor,SKINS.map(k=>({l:k.l+(curSkinId()===k.id?'  ✓':''),ic:curSkinId()===k.id?'check':undefined,fn:()=>setSkin(k.id)})),{right:true});}
@@ -2652,7 +2795,7 @@ async function boot(){
  await loadBackupHandle();await loadFolderMap();phase2Boot();
  
  $$('#themeseg button').forEach(b=>{b.append(icon('palette'));b.onclick=()=>themeMenu(b);});
- $('#aiBtn').append(icon('spark'),'Copy for AI');$('#aiBtn').onclick=copyForAI;$('#shareBtn').append(icon('upload'),'Save / Share');$('#shareBtn').onclick=openShare;
+ $('#aiBtn').append(icon('spark',16));$('#aiBtn').onclick=copyForAI;$('#shareBtn').append(icon('upload'),'Save / Share');$('#shareBtn').onclick=openShare;
  $('#topHide').append(icon('tophide',16));$('#topHide').onclick=toggleTop;$('#topshow').append(icon('topshow',14),h('span',null,'Show top bar'));$('#topshow').onclick=toggleTop;$('#exitfocus').append(icon('expand',14),h('span',null,'Exit focus mode'));$('#exitfocus').onclick=toggleFocus;
  initV24();applySettings();
  $('#title').addEventListener('input',e=>{if(!S.cur)return;S.cur.title=e.target.value;onTyping();clearTimeout(S.tt);S.tt=setTimeout(()=>{renderTabs();renderRail();},400);});
@@ -2676,7 +2819,7 @@ const hasFiles=e=>[...(e.dataTransfer&&e.dataTransfer.types||[])].includes('File
 document.addEventListener('dragenter',e=>{if(hasFiles(e)){dragDepth++;document.body.classList.add('dragging');}});
 document.addEventListener('dragleave',()=>{dragDepth=Math.max(0,dragDepth-1);if(!dragDepth)document.body.classList.remove('dragging');});
 document.addEventListener('dragover',e=>{if(hasFiles(e))e.preventDefault();});
-document.addEventListener('drop',async e=>{dragDepth=0;document.body.classList.remove('dragging');let fl=[...(e.dataTransfer&&e.dataTransfer.files||[])];if(!fl.length)return;e.preventDefault();{const pdfs=fl.filter(isPdfFile);if(pdfs.length&&(S.view==='library'||S.view==='pdf')){pdfImport(pdfs,S.lib.scope);fl=fl.filter(f=>!isPdfFile(f));if(!fl.length)return;}}
+document.addEventListener('drop',async e=>{dragDepth=0;document.body.classList.remove('dragging');let fl=[...(e.dataTransfer&&e.dataTransfer.files||[])];if(!fl.length)return;e.preventDefault();if(S.view==='library'&&S.lib.scope.t==='files'&&S.lfs){lfPutFiles(fl);return;}{const pdfs=fl.filter(isPdfFile);if(pdfs.length&&(S.view==='library'||S.view==='pdf')){pdfImport(pdfs,S.lib.scope);fl=fl.filter(f=>!isPdfFile(f));if(!fl.length)return;}}
  if(S.view==='library'||!S.cur){if(fl.every(f=>/\.(html?|md|txt)$/i.test(f.name))&&S.view==='library'){importMany(fl);return;}}
  if(fl.length===1&&/\.(html?|md)$/i.test(fl[0].name)&&S.view==='library'){importMany(fl);return;}
  await ensureNoteOpen();let spot=null;const sh=$('#sheet');if(sh&&e.target.closest&&e.target.closest('#canvas'))spot=sheetPoint(e);
@@ -2775,7 +2918,7 @@ function decorateAside(){const a=$('#aside'),btn=$('#addPageBtn');const note=!!(
   if(S.settings.asideCollapsed){const b=h('button',{class:'tb rl2 pgcollapsed',title:'Pages ('+S.cur.pages.length+')','aria-label':'Pages',onclick:()=>{S.settings.asideCollapsed=false;saveSettings();applyAside();refreshAside();}},icon('page',18));
     if(a.firstElementChild)a.firstElementChild.after(b);else a.append(b);return;}
   a.prepend(pagesPanel());}
-$('#addPageBtn').append(icon('plus',14),'Page');$('#addPageBtn').onclick=()=>addPage();
+$('#addPageBtn').append(icon('pages',16));$('#addPageBtn').onclick=()=>addPage();
 
 /* ---- Ctrl + drag pans the canvas ---- */
 (function(){const cv=$('#canvas');let pan=null;
@@ -2813,7 +2956,7 @@ function gapMoved(o){if(o&&o.t==='image'&&o.sp&&!o.locked){const sp=spaceEl(o.id
 
 /* ================= PHASE 2: save folder ================= */
 
-const APP_VERSION='2.4.0',APP_BUILD='PDF study, alarms, apps · October 2026';
+const APP_VERSION='2.5.0',APP_BUILD='Linked folders, favourites, Liquid Glass · October 2026';
 S.fmap={};S.fmapLoaded=false;S.persisted=null;S.vAt={};S.ui.sbHide={};S.saveProg=null;
 function folderOn(){return !!S.backupHandle;}
 async function loadFolderMap(){try{const r=await DB.get('meta','folderMap');S.fmap=(r&&r.m)||{};}catch(e){S.fmap={};}S.fmapLoaded=true;}
@@ -3016,7 +3159,7 @@ function multiMenu(){const objs=selObjs(),n=objs.length;const gs=objs.map(o=>o.g
 
 /* ================= v2.2.0 quick fixes: window title, left pane click, note list mode, files and folders page ================= */
 /* ---- window title: no more "≠AdHD notes - ≠AdHD" ---- */
-function syncTitle(){try{let t;if(S.view==='note'&&S.cur)t=noteTitle(S.cur);else if(S.view==='pdf'&&S.pdfCur)t=S.pdfCur.name;else t=(S.lib&&S.lib.scope&&S.lib.scope.t==='explorer')?'Files and folders':'Library';
+function syncTitle(){try{let t;if(S.view==='note'&&S.cur)t=noteTitle(S.cur);else if(S.view==='pdf'&&S.pdfCur)t=S.pdfCur.name;else t=(S.lib&&S.lib.scope&&S.lib.scope.t==='explorer')?'Files and folders':(S.lib&&S.lib.scope&&S.lib.scope.t==='files')?'Linked files':'Library';
   const app=(window.matchMedia&&matchMedia('(display-mode: standalone)').matches)||navigator.standalone;
   const full=app?t:t+' – ≠AdHD';if(document.title!==full)document.title=full;}catch(e){}}
 
@@ -3393,7 +3536,7 @@ function appMenu(a,x,y,pop){const arr=favApps(),i=arr.findIndex(q=>q.id===a.id);
 function appsChanged(){saveSettings();launcherSync(false);}
 let appsPop=null;
 function closeAppsPop(){if(appsPop){appsPop.close();}}
-function openAppsPop(anchor){if(appsPop){appsPop.close();return;}const el=h('div',{class:'appspop',role:'dialog','aria-label':'Favourite apps'});const pop={el,render,close(){el.remove();document.removeEventListener('mousedown',out,true);document.removeEventListener('keydown',key,true);appsPop=null;const b=$('#appsBtn');b&&b.classList.remove('on');}};
+function openAppsPop(anchor){if(appsPop){appsPop.close();return;}if(typeof FAVPOP!=='undefined')['web','folders'].forEach(k=>FAVPOP[k]&&FAVPOP[k].close());const el=h('div',{class:'appspop',role:'dialog','aria-label':'Favourite apps'});const pop={el,render,close(){el.remove();document.removeEventListener('mousedown',out,true);document.removeEventListener('keydown',key,true);appsPop=null;const b=$('#appsBtn');b&&b.classList.remove('on');}};
  function out(e){if(el.contains(e.target)||e.target.closest('#appsBtn')||e.target.closest('.menu')||e.target.closest('#modals'))return;pop.close();}
  function key(e){if(e.key==='Escape'&&!$('#modals').children.length&&!document.querySelector('.menu')){e.stopPropagation();pop.close();}}
  function render(){el.innerHTML='';const arr=favApps();el.append(h('div',{class:'aph'},h('b',null,'Favourite apps'),h('button',{class:'btn sm',onclick:async()=>{const r=await appDialog(null);if(r)render();}},icon('plus',13),'Add'),h('button',{class:'tb',style:'width:28px;height:28px',title:'Launcher setup (needed once for apps on this PC)','aria-label':'Launcher setup',onclick:()=>{pop.close();launcherDialog();}},icon('gear',15))));
@@ -3424,26 +3567,32 @@ function launchApp(a){const t=cleanPath(a.target);if(!t)return;
  const L=S.settings.launcher||{};if(!L.ready){toast('One-time setup needed',{sub:'Windows only lets a web page start your own programs through a small launcher.',actions:[{l:'Set up',p:1,fn:launcherDialog}],ms:9000});return;}
  launchProtocol('adhdrun:'+a.id);toast('Opening '+a.name,{sub:'If nothing happens, allow ≠AdHD to open the launcher when the browser asks.'});}
 /* launcher files */
-function launcherVbs(){return ["' AdHD Launcher - lets the AdHD notes app open your favourite apps.",
+function launcherVbs(){return ["' AdHD Launcher (version 2) - lets the AdHD notes app open your favourite apps, folders and files.",
 "' 1) Double-click this file ONCE to install it (a message confirms).",
 "' 2) Keep it in the same folder as adhd-favorites.txt. If you move the folder, run it again.",
 "' It only opens programs that are listed in adhd-favorites.txt.",
-"Option Explicit","Dim sh, fso, selfPath, folder, reg, arg, id, re, favFile, ts, line, parts, target, args, startIn, sa, found","Set sh = CreateObject(\"WScript.Shell\")","Set fso = CreateObject(\"Scripting.FileSystemObject\")","selfPath = WScript.ScriptFullName","folder = fso.GetParentFolderName(selfPath)","",
+"Option Explicit","Dim sh, fso, selfPath, folder, reg, arg, id, re, favFile, ts, line, parts, target, args, startIn, sa, found, q, pos, mode, relHex, rel, i, seg, flag, ext","Set sh = CreateObject(\"WScript.Shell\")","Set fso = CreateObject(\"Scripting.FileSystemObject\")","selfPath = WScript.ScriptFullName","folder = fso.GetParentFolderName(selfPath)","",
 "If WScript.Arguments.Count = 0 Then","  reg = \"HKCU\\Software\\Classes\\adhdrun\\\"","  sh.RegWrite reg, \"URL:AdHD Launcher\", \"REG_SZ\"","  sh.RegWrite reg & \"URL Protocol\", \"\", \"REG_SZ\"","  sh.RegWrite reg & \"shell\\open\\command\\\", \"\"\"\" & sh.ExpandEnvironmentStrings(\"%SystemRoot%\") & \"\\System32\\wscript.exe\"\" //B //Nologo \"\"\" & selfPath & \"\"\" \"\"%1\"\"\", \"REG_SZ\"","  MsgBox \"The launcher is installed.\" & vbCrLf & vbCrLf & \"Go back to AdHD and click 'I ran the launcher'.\", 64, \"AdHD Launcher\"","  WScript.Quit","End If","",
-"arg = WScript.Arguments(0)","id = arg","If LCase(Left(id, 8)) = \"adhdrun:\" Then id = Mid(id, 9)","Do While Left(id, 1) = \"/\"","  id = Mid(id, 2)","Loop","Do While Right(id, 1) = \"/\"","  id = Left(id, Len(id) - 1)","Loop","Set re = New RegExp","re.Pattern = \"^[A-Za-z0-9_-]{1,40}$\"","If Not re.Test(id) Then WScript.Quit","",
+"arg = WScript.Arguments(0)","id = arg","If LCase(Left(id, 8)) = \"adhdrun:\" Then id = Mid(id, 9)","q = \"\"","pos = InStr(id, \"?\")","If pos > 0 Then","  q = Mid(id, pos + 1)","  id = Left(id, pos - 1)","End If","Do While Left(id, 1) = \"/\"","  id = Mid(id, 2)","Loop","Do While Right(id, 1) = \"/\"","  id = Left(id, Len(id) - 1)","Loop","Set re = New RegExp","re.Pattern = \"^[A-Za-z0-9_-]{1,40}$\"","If Not re.Test(id) Then WScript.Quit","",
 "favFile = folder & \"\\adhd-favorites.txt\"","If Not fso.FileExists(favFile) Then","  MsgBox \"adhd-favorites.txt was not found next to the launcher.\" & vbCrLf & \"Open AdHD > Favourite apps > Launcher setup and save the files again.\", 48, \"AdHD Launcher\"","  WScript.Quit","End If","",
-"found = False","Set ts = fso.OpenTextFile(favFile, 1, False, -1)","Do Until ts.AtEndOfStream","  line = ts.ReadLine","  If Left(line, 1) <> \"#\" Then","    parts = Split(line, vbTab)","    If UBound(parts) >= 1 Then","      If parts(0) = id Then","        found = True","        target = sh.ExpandEnvironmentStrings(parts(1))","        args = \"\" : startIn = \"\"","        If UBound(parts) >= 2 Then args = parts(2)","        If UBound(parts) >= 3 Then startIn = sh.ExpandEnvironmentStrings(parts(3))","        Exit Do","      End If","    End If","  End If","Loop","ts.Close","",
-"If Not found Then","  MsgBox \"That app is not in the launcher list yet. Save the launcher files again from AdHD.\", 48, \"AdHD Launcher\"","  WScript.Quit","End If","",
+"found = False : flag = \"\"","Set ts = fso.OpenTextFile(favFile, 1, False, -1)","Do Until ts.AtEndOfStream","  line = ts.ReadLine","  If Left(line, 1) <> \"#\" Then","    parts = Split(line, vbTab)","    If UBound(parts) >= 1 Then","      If parts(0) = id Then","        found = True","        target = sh.ExpandEnvironmentStrings(parts(1))","        args = \"\" : startIn = \"\"","        If UBound(parts) >= 2 Then args = parts(2)","        If UBound(parts) >= 3 Then startIn = sh.ExpandEnvironmentStrings(parts(3))","        If UBound(parts) >= 4 Then flag = Trim(parts(4))","        Exit Do","      End If","    End If","  End If","Loop","ts.Close","",
+"If Not found Then","  MsgBox \"That app is not in the launcher list yet. Save the launcher files again from AdHD.\", 48, \"AdHD Launcher\"","  WScript.Quit","End If","","mode = \"o\" : relHex = \"\"","For Each seg In Split(q, \"&\")","  If Left(seg, 2) = \"m=\" Then mode = Replace(Mid(seg, 3), \"/\", \"\")","  If Left(seg, 2) = \"p=\" Then relHex = Replace(Mid(seg, 3), \"/\", \"\")","Next","rel = \"\"","For i = 1 To Len(relHex) - 3 Step 4","  rel = rel & ChrW(CLng(\"&H\" & Mid(relHex, i, 4) & \"&\"))","Next",
+"If flag = \"ROOT\" Then","  args = \"\" : startIn = \"\"","  Do While Right(target, 1) = \"\\\" And Len(target) > 3 : target = Left(target, Len(target) - 1) : Loop",
+"  If rel <> \"\" Then","    rel = Replace(rel, \"/\", \"\\\")","    If InStr(rel, \"..\") > 0 Or InStr(rel, \":\") > 0 Or Left(rel, 1) = \"\\\" Then WScript.Quit","    target = target & \"\\\" & rel","  End If",
+"  If Not fso.FileExists(target) And Not fso.FolderExists(target) Then","    MsgBox \"Cannot find:\" & vbCrLf & target, 48, \"AdHD Launcher\"","    WScript.Quit","  End If",
+"  If fso.FileExists(target) And mode <> \"s\" Then","    ext = LCase(fso.GetExtensionName(target))","    If InStr(\"|exe|bat|cmd|vbs|vbe|js|jse|wsf|wsh|hta|msi|ps1|scr|com|lnk|reg|dll|cpl|jar|msc|pif|url|\", \"|\" & ext & \"|\") > 0 Then WScript.Quit","  End If",
+"  If mode = \"s\" Then","    Set sa = CreateObject(\"Shell.Application\")","    If fso.FolderExists(target) Then","      sa.ShellExecute \"explorer.exe\", \"\"\"\" & target & \"\"\"\", \"\", \"open\", 1","    Else","      sa.ShellExecute \"explorer.exe\", \"/select,\"\"\" & target & \"\"\"\", \"\", \"open\", 1","    End If","    WScript.Quit","  End If",
+"ElseIf rel <> \"\" Then","  WScript.Quit","End If","",
 "If InStr(target, \"://\") = 0 And InStr(target, \":\") <> 2 And Left(target, 2) <> \"\\\\\" Then","  ' not a drive path, assume a protocol or program name - let Windows decide","ElseIf InStr(target, \"://\") = 0 Then","  If Not fso.FileExists(target) And Not fso.FolderExists(target) Then","    MsgBox \"Cannot find:\" & vbCrLf & target, 48, \"AdHD Launcher\"","    WScript.Quit","  End If","  If startIn = \"\" And fso.FileExists(target) Then startIn = fso.GetParentFolderName(target)","End If","",
 "Set sa = CreateObject(\"Shell.Application\")","sa.ShellExecute target, args, startIn, \"open\", 1",""].join('\r\n');}
-function launcherList(){const L=['# AdHD favourite apps. One per line: id <TAB> target <TAB> arguments <TAB> start in'];favApps().forEach(a=>{if(isUriTarget(a.target))return;const c=v=>String(v||'').replace(/[\t\r\n]+/g,' ');L.push([a.id,c(cleanPath(a.target)),c(a.args),c(a.startIn)].join('\t'));});return L.join('\r\n')+'\r\n';}
+function launcherList(){const L=['# AdHD favourite apps. One per line: id <TAB> target <TAB> arguments <TAB> start in <TAB> ROOT (folders)'];if(typeof lkLauncherLines==='function')lkLauncherLines().forEach(x=>L.push(x));favApps().forEach(a=>{if(isUriTarget(a.target))return;const c=v=>String(v||'').replace(/[\t\r\n]+/g,' ');L.push([a.id,c(cleanPath(a.target)),c(a.args),c(a.startIn)].join('\t'));});return L.join('\r\n')+'\r\n';}
 function utf16leBlob(text,type){const u=new Uint8Array(2+text.length*2);u[0]=0xFF;u[1]=0xFE;for(let i=0;i<text.length;i++){const c=text.charCodeAt(i);u[2+i*2]=c&255;u[3+i*2]=c>>8;}return new Blob([u],{type:type||'text/plain'});}
 async function launcherSync(manual){const L=S.settings.launcher=S.settings.launcher||{ready:false,stale:false};
  if(folderOn()&&S.backupPerm==='granted'&&L.saved){try{await writeAt(S.backupHandle,['AdHD-Launcher'],'adhd-favorites.txt',utf16leBlob(launcherList()));L.stale=false;saveSettings();return true;}catch(e){}}
  if(L.saved||manual){L.stale=true;saveSettings();}return false;}
 async function launcherSave(){const L=S.settings.launcher=S.settings.launcher||{ready:false};
- if(folderOn()&&S.backupPerm==='granted'){try{await writeAt(S.backupHandle,['AdHD-Launcher'],'AdHD-Launcher.vbs',new Blob([launcherVbs()],{type:'text/plain'}));await writeAt(S.backupHandle,['AdHD-Launcher'],'adhd-favorites.txt',utf16leBlob(launcherList()));L.saved='folder';L.stale=false;saveSettings();toast('Launcher files saved',{ok:true,title:'Launcher files saved',sub:'Open your save folder > AdHD-Launcher and double-click AdHD-Launcher.vbs once.',ms:9000});return 'folder';}catch(e){console.warn(e);}}
- dl(new Blob([launcherVbs()],{type:'text/plain'}),'AdHD-Launcher.vbs');setTimeout(()=>dl(utf16leBlob(launcherList()),'adhd-favorites.txt'),400);L.saved='download';L.stale=false;saveSettings();toast('Two files downloaded',{ok:true,title:'Two files downloaded',sub:'Put both in one folder, for example C:\\Users\\you\\AdHD-Launcher, then double-click AdHD-Launcher.vbs once.',ms:12000});return 'download';}
+ if(folderOn()&&S.backupPerm==='granted'){try{await writeAt(S.backupHandle,['AdHD-Launcher'],'AdHD-Launcher.vbs',new Blob([launcherVbs()],{type:'text/plain'}));await writeAt(S.backupHandle,['AdHD-Launcher'],'adhd-favorites.txt',utf16leBlob(launcherList()));L.saved='folder';L.ver=2;L.stale=false;saveSettings();toast('Launcher files saved',{ok:true,title:'Launcher files saved',sub:'Open your save folder > AdHD-Launcher and double-click AdHD-Launcher.vbs once.',ms:9000});return 'folder';}catch(e){console.warn(e);}}
+ dl(new Blob([launcherVbs()],{type:'text/plain'}),'AdHD-Launcher.vbs');setTimeout(()=>dl(utf16leBlob(launcherList()),'adhd-favorites.txt'),400);L.saved='download';L.ver=2;L.stale=false;saveSettings();toast('Two files downloaded',{ok:true,title:'Two files downloaded',sub:'Put both in one folder, for example C:\\Users\\you\\AdHD-Launcher, then double-click AdHD-Launcher.vbs once.',ms:12000});return 'download';}
 function launcherDialog(){const L=S.settings.launcher=S.settings.launcher||{ready:false};const m=modal({title:'Launcher setup',sub:'Lets ≠AdHD start the programs and HTA tools on this PC. Needed once.',width:600,body:()=>{const w=h('div',null);
    w.append(h('div',{class:'note',style:'margin-bottom:10px'},'A web page is not allowed to start programs on its own. The launcher is a tiny script that Windows runs for you. It only ever opens items listed in your Favourite apps, so other websites cannot use it to start anything else.'));
    const step=(n,body)=>h('div',{class:'lstep'},h('div',{class:'nb'},n),h('div',{style:'flex:1;min-width:0'},body));
@@ -3457,16 +3606,440 @@ function launcherDialog(){const L=S.settings.launcher=S.settings.launcher||{read
    Palette commands and start-up
    --------------------------------------------------------------------- */
 function v24Cmds(){const c=[{l:'Go back',k:'Alt Left',fn:navBack},{l:'Go forward',k:'Alt Right',fn:navFwd},{l:'Favourite apps…',fn:()=>openAppsPop($('#appsBtn'))},{l:'Add a favourite app…',fn:()=>appDialog(null)},{l:'Launcher setup (for apps on this PC)',fn:launcherDialog},{l:'Alarms…',fn:openAlarmList},{l:'Add a PDF to study…',fn:()=>pdfImportDialog(S.lib.scope)}];
- favApps().forEach(a=>c.push({l:'Open app: '+a.name,fn:()=>launchApp(a)}));return c;}
+ favApps().forEach(a=>c.push({l:'Open app: '+a.name,fn:()=>launchApp(a)}));if(typeof v25Cmds==='function')c.push(...v25Cmds());return c;}
 function initV24(){
  const b=$('#navBack'),f=$('#navFwd');if(b&&!b.firstChild){b.append(icon('arrowl',17));b.onclick=navBack;f.append(icon('arrowr',17));f.onclick=navFwd;}
- const ab=$('#appsBtn');if(ab&&!ab.firstChild){ab.append(icon('rocket',15),'Apps');ab.onclick=()=>openAppsPop(ab);}
+ const ab=$('#appsBtn');if(ab&&!ab.firstChild){ab.append(icon('rocket',16));ab.onclick=()=>openAppsPop(ab);}
+ if(typeof initV25==='function')initV25();
  NAV.uid=uid();try{history.replaceState({adhd:-1,uid:NAV.uid},'');}catch(e){NAV.hist=false;}
  navUpdate();
  DB.get('meta','pdfs').then(r=>{S.pdfs=(r&&r.v)||[];S.pdfs.forEach(p=>{p.tags=p.tags||[];});renderRail();if(S.view==='library')renderLibrary();});
  setInterval(alarmTick,10000);setTimeout(alarmTick,2500);
  document.addEventListener('visibilitychange',()=>{if(!document.hidden)alarmTick();});
 }
+
+/* =====================================================================
+   v2.5: linked folders (a real folder on this PC behind a project or folder),
+   the Linked files page, and the Snapshot dump for screenshots
+   ===================================================================== */
+Object.assign(IC,{
+ unlink:'M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1M14 10a4 4 0 00-5.7 0l-3 3A4 4 0 0011 18.7l1-1M4 4l16 16',
+ favfolder:'M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2zM12 10.2l.95 1.95 2.15.3-1.55 1.5.35 2.15-1.9-1-1.9 1 .35-2.15-1.55-1.5 2.15-.3z',
+ favweb:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.6 5.6 3.6 9S14.6 18.4 12 21M12 3C9.4 5.6 8.4 8.6 8.4 12s1 6.4 3.6 9"/>',
+ filep:'M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8zM14 3v5h5',
+ newfile:'M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8zM14 3v5h5M12 11v6M9 14h6',
+ move:'M5 12h14M13 6l6 6-6 6M3 4v16',
+ pencil:'M4 20h4L19 9l-4-4L4 16z'
+});
+const LK={h:{},perm:{},pending:[],boot:false};
+const lkNewId=()=>'lk'+uid().replace(/[^a-z0-9]/gi,'').slice(0,10);
+const lkHasFS=()=>typeof window.showDirectoryPicker==='function';
+function itemOf(k,id){return k==='project'?proj(id):k==='folder'?fold(id):null;}
+function lkChain(k,id){const out=[];let it=itemOf(k,id),kk=k,guard=0;
+ while(it&&guard++<40){out.push({k:kk,id:it.id,it});if(kk==='folder'){if(it.parent&&fold(it.parent)){it=fold(it.parent);}else if(it.project&&proj(it.project)){it=proj(it.project);kk='project';}else break;}else break;}
+ return out;}
+function effLink(k,id){const ch=lkChain(k,id);for(let i=0;i<ch.length;i++){if(ch[i].it.lk)return{own:i===0,k:ch[i].k,id:ch[i].id,it:ch[i].it,lk:ch[i].it.lk};}return null;}
+function effSnap(k,id){for(const c of lkChain(k,id)){if(typeof c.it.snap==='boolean')return c.it.snap;}return false;}
+function noteCtx(n){return n&&n.folder?{k:'folder',id:n.folder}:n&&n.project?{k:'project',id:n.project}:null;}
+function snapCtx(){if(S.view==='note'&&S.cur)return noteCtx(S.cur);const sc=S.lib&&S.lib.scope;
+ if(S.view==='library'&&sc&&(sc.t==='folder'||sc.t==='project'))return{k:sc.t,id:sc.id};
+ if(S.view==='library'&&sc&&sc.t==='files'&&sc.k!=='fav')return{k:sc.k,id:sc.id};
+ return S.cur?noteCtx(S.cur):null;}
+function lkSnapLink(ctx){if(!ctx)return null;const e=effLink(ctx.k,ctx.id);return e&&effSnap(ctx.k,ctx.id)?e.lk:null;}
+
+/* ---- handles: kept in IndexedDB so the link survives a restart ---- */
+async function lkLoadHandles(){try{const all=await DB.all('meta');all.forEach(r=>{if(r&&String(r.k).startsWith('lkh:')&&r.h)LK.h[String(r.k).slice(4)]=r.h;});}catch(e){}LK.boot=true;}
+async function lkStore(id,hd){LK.h[id]=hd;delete LK.perm[id];await DB.put('meta',{k:'lkh:'+id,h:hd});}
+async function lkForget(id){delete LK.h[id];delete LK.perm[id];await DB.del('meta','lkh:'+id);}
+async function lkPerm(lk,ask){const hd=LK.h[lk.id];if(!hd)return'missing';
+ try{if(!hd.queryPermission){LK.perm[lk.id]='granted';return'granted';}let p=await hd.queryPermission({mode:'readwrite'});if(p!=='granted'&&ask)p=await hd.requestPermission({mode:'readwrite'});LK.perm[lk.id]=p;return p;}catch(e){LK.perm[lk.id]='denied';return'denied';}}
+async function lkReconnect(id){const hd=LK.h[id];if(!hd)return false;const p=await lkPerm({id},true);
+ if(p==='granted'){const keep=[];for(const q of LK.pending){if(q.lkid===id){try{const nm=await snapSave(hd,q.blob);toast('',{ok:true,title:'Screenshot saved to Snapshot',sub:nm,ms:4000});}catch(e){keep.push(q);}}else keep.push(q);}LK.pending=keep;
+  if(S.view==='library'&&S.lib.scope.t==='files')renderLibrary();return true;}
+ toast('The browser did not allow access',{sub:'Choose the folder again from Linked folder settings.'});return false;}
+
+/* ---- file system helpers ---- */
+const extOf=n=>{const m=/\.([^.\\/]+)$/.exec(n||'');return m?m[1].toLowerCase():'';};
+async function fsExists(parent,name){try{await parent.getFileHandle(name);return true;}catch(e){}try{await parent.getDirectoryHandle(name);return true;}catch(e){}return false;}
+async function fsUnique(dir,name){const m=/^(.*?)(\.[^.]+)?$/.exec(name);const base=m[1],ext=m[2]||'';let i=2,nn=name;while(await fsExists(dir,nn))nn=base+' ('+(i++)+')'+ext;return nn;}
+async function fsCopy(srcParent,name,kind,dstParent,newName){
+ if(kind==='file'){const f=await(await srcParent.getFileHandle(name)).getFile();const w=await(await dstParent.getFileHandle(newName,{create:true})).createWritable();await w.write(f);await w.close();return;}
+ const sd=await srcParent.getDirectoryHandle(name),nd=await dstParent.getDirectoryHandle(newName,{create:true});
+ for await(const[nm,hd]of sd.entries())await fsCopy(sd,nm,hd.kind,nd,nm);}
+async function fsRenameIn(parent,item,newName){let done=false;try{if(typeof item.handle.move==='function'){await item.handle.move(newName);done=true;}}catch(e){}
+ if(!done){await fsCopy(parent,item.name,item.kind,parent,newName);await parent.removeEntry(item.name,{recursive:true});}}
+async function fsSafeName(s){return String(s||'').replace(/[\\/:*?"<>|]+/g,'_').replace(/^[\s.]+|[\s.]+$/g,'').slice(0,120);}
+
+/* ---- snapshots: screenshots also land in <linked folder>\Snapshot ---- */
+function snapBegin(){const ctx=snapCtx();if(!ctx)return null;const e=effLink(ctx.k,ctx.id);if(!e||!effSnap(ctx.k,ctx.id))return null;const hd=LK.h[e.lk.id];
+ if(!hd){toast('A linked folder is not available here',{sub:'The screenshot was kept in the note only. Open Linked folder settings to choose the folder again.',ms:8000});return null;}
+ return{e,hd,permP:lkPerm(e.lk,true)};}
+async function snapSave(hd,blob){const dir=await hd.getDirectoryHandle('Snapshot',{create:true});const d=new Date();const ext=/jpe?g/.test(blob.type)?'jpg':'png';
+ const base='Snapshot_'+d.getFullYear()+'-'+pad2(d.getMonth()+1)+'-'+pad2(d.getDate())+'_'+pad2(d.getHours())+'-'+pad2(d.getMinutes())+'-'+pad2(d.getSeconds());
+ let name=base+'.'+ext,i=2;while(await fsExists(dir,name))name=base+'_'+(i++)+'.'+ext;
+ const w=await(await dir.getFileHandle(name,{create:true})).createWritable();await w.write(blob);await w.close();return name;}
+async function snapWrite(job,blobP){if(!job)return;
+ try{const blob=await blobP;if(!blob)return;const p=await job.permP;
+  if(p!=='granted'){LK.pending.push({lkid:job.e.lk.id,blob,t:Date.now()});toast('Screenshot is waiting for folder access',{sub:'Allow access to “'+job.e.lk.name+'” and it is saved to its Snapshot folder.',actions:[{l:'Allow',p:1,fn:()=>lkReconnect(job.e.lk.id)}],ms:10000});return;}
+  const nm=await snapSave(job.hd,blob);toast('',{ok:true,title:'Also saved to the Snapshot folder',sub:job.e.lk.name+'\\Snapshot\\'+nm,ms:5000});
+  if(S.view==='library'&&S.lib.scope.t==='files')lfReload();}
+ catch(err){console.warn(err);toast('Could not save the screenshot to the linked folder',{sub:String(err&&err.message||err),ms:8000});}}
+
+/* ---- moving things around: say so when screenshots will go somewhere else ---- */
+function lkBefore(src){try{if(src.k==='note'){const n=S.notes.find(x=>x.id===src.id);return{name:n&&noteTitle(n),lk:lkSnapLink(noteCtx(n)),fn:()=>lkSnapLink(noteCtx(S.notes.find(x=>x.id===src.id)))};}
+  if(src.k==='folder'){const f=fold(src.id);return{name:f&&f.name,lk:lkSnapLink({k:'folder',id:src.id}),fn:()=>lkSnapLink({k:'folder',id:src.id})};}}catch(e){}return null;}
+function lkAfter(b){if(!b)return;let a=null;try{a=b.fn();}catch(e){return;}const ai=a?a.id:'',bi=b.lk?b.lk.id:'';if(ai===bi)return;
+ if(a)toast('Screenshots here now go to “'+a.name+'”',{sub:'Folder: '+a.name+'\\Snapshot.'+(b.lk?' Earlier ones stay in “'+b.lk.name+'\\Snapshot”.':''),ms:9000});
+ else toast('This is no longer linked to a folder',{sub:'New screenshots stay in the note only. Earlier ones stay in “'+b.lk.name+'\\Snapshot”.',ms:9000});}
+(function(){const orig=moveItem;moveItem=function(src,t){const b=lkBefore(src);const r=orig.apply(this,arguments);if(b)setTimeout(()=>lkAfter(b),60);return r;};})();
+
+/* ---- badges and menu entries ---- */
+function lkBadge(k,id){const e=effLink(k,id);if(!e)return null;return h('span',{class:'lkb'+(e.own?'':' inh'),title:e.own?'Linked to “'+e.lk.name+'” on this PC':'Uses the linked folder “'+e.lk.name+'” of its parent'},icon('link',12));}
+function lkMenuItems(k,id){const e=effLink(k,id);const out=[{sep:1}];
+ if(e)out.push({l:'Open linked files',ic:'folder',fn:()=>lkOpenFiles(k,id)},{l:'Linked folder settings…',ic:'gear',fn:()=>lkDialog(k,id)});
+ else out.push({l:'Link a folder on this PC…',ic:'link',fn:()=>lkDialog(k,id)});
+ return out;}
+function lkOpenFiles(k,id){setScope({t:'files',k,id});}
+function lkScopeAsLib(sc){return sc&&sc.t==='files'&&(sc.k==='project'||sc.k==='folder')?{t:sc.k,id:sc.id}:sc;}
+
+/* ---- the link dialog ---- */
+function lkSwitchRow(label,sub,on,fn){const b=h('button',{class:'tgl'+(on?'':' off'),role:'switch','aria-checked':String(!!on),'aria-label':label,onclick:()=>fn(!on)},h('i'));
+ return h('div',{style:'display:flex;align-items:center;gap:12px'},h('div',{style:'flex:1'},h('div',{style:'font-size:14px;font-weight:600'},label),sub?h('div',{style:'font-size:12px;color:var(--mute);line-height:1.45;margin-top:2px'},sub):null),b);}
+async function lkPick(){if(!lkHasFS()){toast('Linking a folder needs Edge or Chrome');return null;}
+ try{return await window.showDirectoryPicker({mode:'readwrite',id:'adhd-link'});}catch(e){return null;}}
+async function lkAttach(k,id,hd,pathText){const it=itemOf(k,id);if(!it)return null;const old=it.lk;
+ const lk={id:old?old.id:lkNewId(),name:hd.name||'Folder',path:cleanPath(pathText!=null?pathText:(old&&old.path)||'')};
+ await lkStore(lk.id,hd);it.lk=lk;if(typeof it.snap!=='boolean')it.snap=true;saveTree();
+ try{if(it.snap)await hd.getDirectoryHandle('Snapshot',{create:true});}catch(e){}
+ if(typeof launcherSync==='function')launcherSync(false);refreshAll();return lk;}
+async function lkDetach(k,id){const it=itemOf(k,id);if(!it||!it.lk)return;const lid=it.lk.id;delete it.lk;saveTree();await lkForget(lid);
+ if(S.lib.scope.t==='files'&&S.lib.scope.k===k&&S.lib.scope.id===id){const e=effLink(k,id);if(!e)S.lib.scope={t:k,id};}
+ if(typeof launcherSync==='function')launcherSync(false);refreshAll();}
+function lkDialog(k,id){const it=itemOf(k,id);if(!it)return;let m;
+ const draw=()=>m&&m.refresh();
+ m=modal({title:'Linked folder',sub:'“'+it.name+'” can show and manage a real folder on this PC, for example one inside OneDrive.',width:580,body:()=>{const w=h('div',{style:'display:flex;flex-direction:column;gap:16px'});const e=effLink(k,id);
+  if(!lkHasFS()){w.append(h('div',{class:'note warn'},'Linking a folder needs Edge or Chrome, because only they can open a folder on your PC.'));return w;}
+  if(e&&!e.own){w.append(h('div',{class:'note'},'This '+k+' uses the linked folder of “'+e.it.name+'” (',h('b',null,e.lk.name),'). You can open it and use Snapshot here, or link a different folder just for this '+k+'.'));}
+  if(e&&e.own){const st=LK.perm[e.lk.id],hd=LK.h[e.lk.id];
+   w.append(h('div',{class:'lkcard'},h('span',{class:'lki'},icon('folder',22)),h('div',{style:'min-width:0;flex:1'},h('b',null,e.lk.name),h('div',{style:'font-size:12px;color:var(--mute)'},hd?(st==='granted'?'Connected':'Needs your OK again'):'Not available on this device')),
+     hd&&st!=='granted'?h('button',{class:'btn sm pri',onclick:async()=>{await lkReconnect(e.lk.id);draw();}},'Reconnect'):null));
+   const pi=h('input',{value:e.lk.path||'',placeholder:'Optional, e.g. C:\\Users\\you\\OneDrive - Company\\Maintenance','aria-label':'Path of this folder on the PC',spellcheck:'false',onchange:()=>{e.lk.path=cleanPath(pi.value);saveTree();if(typeof launcherSync==='function')launcherSync(false);}});
+   w.append(h('div',null,h('div',{class:'lab',style:'margin-bottom:6px'},'Path on this PC (optional)'),h('label',{class:'fld'},pi),h('div',{style:'font-size:12px;color:var(--mute);margin-top:6px;line-height:1.5'},'Browsers never reveal where a folder is. Paste it here only if you want “Open with the default program” and “Show in File Explorer”. These need the one-time launcher (Apps > gear).')));}
+  const eff=effLink(k,id);
+  if(eff){w.append(lkSwitchRow('Save screenshots in this folder','A folder named Snapshot is created inside '+eff.lk.name+'. Each capture is also saved there as a picture. Moving this '+k+' or its notes elsewhere is safe: screenshots simply follow the new place.',effSnap(k,id),on=>{it.snap=on;saveTree();if(on&&LK.h[eff.lk.id]){LK.h[eff.lk.id].getDirectoryHandle('Snapshot',{create:true}).catch(()=>{});}refreshAll();draw();}));}
+  return w;},
+  foot:()=>{const e=effLink(k,id);const f=[];
+   if(e&&e.own)f.push(h('button',{class:'btn danger',onclick:async()=>{if(await confirmDlg('Unlink “'+e.lk.name+'”?','Your files on the PC are not touched. Only the link is removed from ≠AdHD.','Unlink',true)){await lkDetach(k,id);m.close();}}},icon('unlink',14),'Unlink'));
+   f.push(h('span',{class:'sp'}));
+   if(e)f.push(h('button',{class:'btn',onclick:()=>{m.close();lkOpenFiles(k,id);}},icon('folder',14),'Open files'));
+   if(lkHasFS())f.push(h('button',{class:'btn pri',onclick:async()=>{const hd=await lkPick();if(!hd)return;const lk=await lkAttach(k,id,hd);if(lk){toast('',{ok:true,title:'Linked to “'+hd.name+'”',sub:'Use Open files to browse it here.'});draw();}}},icon('link',14),e&&e.own?'Choose a different folder':'Choose folder…'));
+   f.push(h('button',{class:'btn',onclick:()=>m.close()},'Close'));return f;}});}
+
+/* =====================================================================
+   The Linked files page (scope {t:'files',k:'project'|'folder'|'fav',id})
+   ===================================================================== */
+function favFoldersArr(){S.settings.favFolders=S.settings.favFolders||[];return S.settings.favFolders;}
+function lfState(sc){const key=sc.k+':'+sc.id;if(!S.lfs||S.lfs.key!==key)S.lfs={key,dirs:[],items:null,busy:false,err:'',sort:'name',asc:true,q:'',sel:new Set(),cur:-1,clip:S.lfs&&S.lfs.clip||null,seq:0,view:[],hd:null};return S.lfs;}
+function lfRoot(sc){if(sc.k==='fav'){const f=favFoldersArr().find(x=>x.id===sc.id);if(!f)return null;const lid='fav-'+f.id;return{kind:'item',name:f.name,lk:{id:lid,name:f.name,path:f.path||''},hd:LK.h[lid],fav:f,title:f.name};}
+ const it=itemOf(sc.k,sc.id);if(!it)return null;const e=effLink(sc.k,sc.id);if(!e)return{kind:'none',item:it,title:it.name};
+ return{kind:'item',name:e.lk.name,e,lk:e.lk,hd:LK.h[e.lk.id],item:it,inherited:!e.own,title:it.name};}
+function lfSc(){return S.lib.scope;}
+async function lfCurDir(){const st=S.lfs,R=lfRoot(lfSc());return dirAt(R.hd,st.dirs,false);}
+async function lfReload(){const sc=lfSc();if(sc.t!=='files')return;const st=lfState(sc),R=lfRoot(sc);if(!R||!R.hd)return;const seq=++st.seq;st.busy=true;st.err='';
+ let items=null;try{if(LK.perm[R.lk.id]!=='granted')await lkPerm(R.lk,false);if(LK.perm[R.lk.id]==='granted'){let dir;try{dir=await dirAt(R.hd,st.dirs,false);}catch(e){if(st.dirs.length){st.dirs=st.dirs.slice(0,-1);st.busy=false;return lfReload();}throw e;}
+   st.hd=dir;items=[];for await(const[nm,hd]of dir.entries()){const it={name:nm,kind:hd.kind,handle:hd,size:0,mod:0};if(hd.kind==='file'){try{const f=await hd.getFile();it.size=f.size;it.mod=f.lastModified;}catch(e){}}items.push(it);}}}
+ catch(e){if(seq===st.seq)st.err=String(e&&e.message||e);}
+ if(seq!==st.seq)return;st.items=items||[];st.busy=false;st.sel=new Set([...st.sel].filter(n=>st.items.some(i=>i.name===n)));if(S.view==='library'&&lfSc().t==='files')renderLibrary();}
+function lfEnter(name){const st=S.lfs;st.dirs=name===null?[]:st.dirs.concat([name]);st.items=null;st.sel=new Set();st.q='';st.cur=-1;lfReload();renderLibrary();}
+function lfGoto(n){const st=S.lfs;st.dirs=st.dirs.slice(0,n);st.items=null;st.sel=new Set();st.q='';st.cur=-1;lfReload();renderLibrary();}
+const LF_TEXT=new Set(['txt','md','markdown','log','csv','json','ini','cfg','conf','bas','vba','vbs','bat','cmd','ps1','py','js','sql','xml','yml','yaml','html','htm','css','hta','tsv']);
+const LF_NATIVE_TAB=new Set(['pdf','png','jpg','jpeg','gif','webp','bmp','txt','log','csv','md','json']);
+const LF_VIEW=new Set(['html','htm','svg','xhtml']);
+const LF_RISKY=new Set(['exe','bat','cmd','vbs','vbe','js','jse','wsf','wsh','hta','msi','ps1','scr','com','lnk','reg','dll','cpl','jar','msc','pif','url']);
+const LF_MIME={pdf:'application/pdf',png:'image/png',jpg:'image/jpeg',jpeg:'image/jpeg',gif:'image/gif',webp:'image/webp',bmp:'image/bmp',txt:'text/plain',log:'text/plain',csv:'text/plain',md:'text/plain',json:'text/plain'};
+function lfIconFor(it){if(it.kind==='directory')return['folder','fo'];const e=extOf(it.name);const col=(typeof FCOL!=='undefined'&&FCOL[e])||'';return[e==='pdf'?'pdf':'filep',col];}
+function lfType(it){if(it.kind==='directory')return'Folder';const e=extOf(it.name);return e?e.toUpperCase()+' file':'File';}
+function lfPathOf(R,st,name){return(R.lk.path?R.lk.path.replace(/[\\/]+$/,'')+'\\':'')+st.dirs.concat(name?[name]:[]).join('\\');}
+function lfSelected(){const st=S.lfs;return(st.items||[]).filter(i=>st.sel.has(i.name));}
+
+/* ---- opening and editing ---- */
+async function lfOpen(it){const st=S.lfs;if(it.kind==='directory'){lfEnter(it.name);return;}
+ try{const e=extOf(it.name);const f=await it.handle.getFile();
+  if(LF_NATIVE_TAB.has(e)){const u=URL.createObjectURL(new Blob([f],{type:LF_MIME[e]||f.type||'application/octet-stream'}));window.open(u,'_blank');setTimeout(()=>URL.revokeObjectURL(u),120000);return;}
+  if(LF_VIEW.has(e)){lfPreviewHtml(it,f);return;}
+  if(LF_TEXT.has(e)&&f.size<2e6){lfEditText(it);return;}
+  if(lfCanNative(it,true)){lfNative(it,'o');return;}
+  dl(f,it.name);toast('Downloaded a copy of “'+it.name+'”',{sub:'A browser cannot open this type itself. Add the folder path in Linked folder settings and set up the launcher to open it straight in its own program.',ms:9000});
+ }catch(err){toast('Could not open it',{sub:String(err&&err.message||err)});}}
+function lfPreviewHtml(it,f){f.text().then(t=>{const fr=h('iframe',{sandbox:'',style:'width:100%;height:60vh;border:1px solid var(--line2);border-radius:10px;background:#fff'});fr.srcdoc=t;
+ const m=modal({title:it.name,sub:'Preview only. Scripts do not run here.',width:860,body:()=>fr,foot:[h('button',{class:'btn',onclick:()=>{m.close();lfEditText(it);}},icon('pencil',14),'Edit as text'),h('span',{class:'sp'}),h('button',{class:'btn',onclick:()=>importAsNote(it)},icon('notes',14),'Open as a note'),h('button',{class:'btn pri',onclick:()=>m.close()},'Close')]});});}
+async function importAsNote(it){try{const f=await it.handle.getFile();const n=await importFile(f,true);if(n){await openNote(n);toast('Opened “'+noteTitle(n)+'” as a note');}}catch(e){toast('Could not open it as a note');}}
+async function lfEditText(it){try{const f=await it.handle.getFile();if(f.size>2e6){toast('This file is too large to edit here');return;}const t=await f.text();
+  const ta=h('textarea',{class:'fld lftext',spellcheck:'false',value:t,'aria-label':'File text'});let m;
+  m=modal({title:it.name,sub:'Changes are written straight to the file on your PC.',width:820,body:()=>ta,foot:[h('span',{style:'font-size:12px;color:var(--mute)'},fmtSize(f.size)),h('span',{class:'sp'}),h('button',{class:'btn',onclick:()=>m.close()},'Cancel'),
+   h('button',{class:'btn pri',onclick:async()=>{try{const w=await it.handle.createWritable();await w.write(ta.value);await w.close();toast('Saved “'+it.name+'”',{ok:true});m.close();lfReload();}catch(e){toast('Could not save',{sub:String(e&&e.message||e)});}}},'Save')]});
+  setTimeout(()=>ta.focus(),40);}catch(e){toast('Could not read it',{sub:String(e&&e.message||e)});}}
+function lfCanNative(it,quiet){const R=lfRoot(lfSc());if(!R||!R.lk.path)return false;const L=S.settings.launcher||{};if(!L.ready||(L.ver||1)<2)return false;if(it.kind!=='directory'&&LF_RISKY.has(extOf(it.name)))return false;return true;}
+function hexUtf16(s){let o='';for(let i=0;i<s.length;i++)o+=s.charCodeAt(i).toString(16).padStart(4,'0');return o;}
+function lfNative(it,mode){const R=lfRoot(lfSc()),st=S.lfs;const L=S.settings.launcher||{};
+ if(!R.lk.path){toast('Add the folder path first',{sub:'Open Linked folder settings and paste the path of this folder on your PC.',actions:[{l:'Settings',p:1,fn:()=>lfSc().k==='fav'?favFolderDialog(R.fav):lkDialog(lfSc().k,lfSc().id)}],ms:9000});return;}
+ if(!L.ready){toast('One-time launcher setup needed',{actions:[{l:'Set up',p:1,fn:launcherDialog}],ms:9000});return;}
+ if((L.ver||1)<2){toast('Update the launcher once',{sub:'Save the launcher files again (Apps > gear) and run AdHD-Launcher.vbs a second time.',actions:[{l:'Open setup',p:1,fn:launcherDialog}],ms:10000});return;}
+ if(mode==='o'&&it.kind!=='directory'&&LF_RISKY.has(extOf(it.name))){toast('Programs and scripts are not started from a file list',{sub:'Use Show in File Explorer, or add it to Favourite apps on purpose.'});return;}
+ const rel=st.dirs.concat([it.name]).join('\\');launchProtocol('adhdrun:'+R.lk.id+'?m='+mode+'&p='+hexUtf16(rel));toast(mode==='s'?'Showing in File Explorer':'Opening “'+it.name+'”');}
+function lfRootOpenExplorer(){const R=lfRoot(lfSc()),st=S.lfs;if(!R.lk.path){lfNative({name:'',kind:'directory'},'f');return;}
+ const L=S.settings.launcher||{};if(!L.ready){toast('One-time launcher setup needed',{actions:[{l:'Set up',p:1,fn:launcherDialog}],ms:9000});return;}if((L.ver||1)<2){toast('Update the launcher once',{sub:'Save the launcher files again (Apps > gear).',actions:[{l:'Open setup',p:1,fn:launcherDialog}],ms:10000});return;}
+ launchProtocol('adhdrun:'+R.lk.id+'?m=f&p='+hexUtf16(st.dirs.join('\\')));toast('Opening the folder in File Explorer');}
+
+/* ---- operations ---- */
+async function lfNewFolder(){const v=await askText('New folder','','Folder name');if(!v||!v.trim())return;const nm=await fsSafeName(v);if(!nm)return;
+ try{const d=await lfCurDir();if(await fsExists(d,nm)){toast('“'+nm+'” already exists here');return;}await d.getDirectoryHandle(nm,{create:true});toast('Created “'+nm+'”',{ok:true});}catch(e){toast('Could not create the folder',{sub:String(e&&e.message||e)});}lfReload();}
+async function lfNewFile(){const v=await askText('New text file','New file.txt','File name');if(!v||!v.trim())return;let nm=await fsSafeName(v);if(!nm)return;if(!/\.[^.]+$/.test(nm))nm+='.txt';
+ try{const d=await lfCurDir();if(await fsExists(d,nm)){toast('“'+nm+'” already exists here');return;}const fh=await d.getFileHandle(nm,{create:true});toast('Created “'+nm+'”',{ok:true});await lfReload();const it=(S.lfs.items||[]).find(i=>i.name===nm);if(it&&LF_TEXT.has(extOf(nm)))lfEditText(it);}catch(e){toast('Could not create the file',{sub:String(e&&e.message||e)});}}
+async function lfPutFiles(files,dir){const st=S.lfs;let n=0;try{const d=dir||await lfCurDir();for(const f of files){try{const nm=await fsUnique(d,await fsSafeName(f.name)||'file');const w=await(await d.getFileHandle(nm,{create:true})).createWritable();await w.write(f);await w.close();n++;}catch(e){toast('Could not add “'+f.name+'”',{sub:String(e&&e.message||e)});}}}catch(e){toast('Could not add files',{sub:String(e&&e.message||e)});}
+ if(n)toast('Added '+n+(n===1?' file':' files'),{ok:true});lfReload();}
+async function lfAddFiles(){try{if(window.showOpenFilePicker){const hs=await showOpenFilePicker({multiple:true});const fs=[];for(const hd of hs)fs.push(await hd.getFile());await lfPutFiles(fs);return;}}catch(e){return;}
+ const inp=h('input',{type:'file',multiple:true,style:'display:none',onchange:()=>{const fs=[...inp.files];inp.remove();if(fs.length)lfPutFiles(fs);}});document.body.append(inp);inp.click();}
+async function lfRename(it){const v=await askText(it.kind==='directory'?'Rename folder':'Rename file',it.name,'New name');if(!v||!v.trim()||v.trim()===it.name)return;let nn=await fsSafeName(v);if(!nn)return;
+ if(it.kind==='file'&&!/\.[^.]+$/.test(nn)){const m=/\.[^.]+$/.exec(it.name);if(m)nn+=m[0];}
+ try{const d=await lfCurDir();if(await fsExists(d,nn)){toast('“'+nn+'” already exists here');return;}await fsRenameIn(d,it,nn);toast('Renamed to “'+nn+'”',{ok:true});S.lfs.sel=new Set([nn]);}catch(e){toast('Could not rename it',{sub:String(e&&e.message||e)});}lfReload();}
+async function lfDelete(items){if(!items.length)return;const one=items.length===1;const dirs=items.filter(i=>i.kind==='directory').length;
+ if(!(await confirmDlg(one?'Delete “'+items[0].name+'”?':'Delete '+items.length+' items?',(dirs?'Folders are deleted with everything inside them. ':'')+'They are removed from the folder on your PC for good. They do not go to the Recycle Bin.','Delete',true)))return;
+ let ok=0;try{const d=await lfCurDir();for(const it of items){try{await d.removeEntry(it.name,{recursive:true});ok++;}catch(e){toast('Could not delete “'+it.name+'”',{sub:String(e&&e.message||e)});}}}catch(e){}
+ if(ok)toast('Deleted '+(ok===1?'“'+items[0].name+'”':ok+' items'),{ok:true});S.lfs.sel=new Set();lfReload();}
+async function lfTransfer(parent,items,dst,copy){let ok=0;const fail=[];
+ for(const it of items){try{
+   let same=false;try{same=await parent.isSameEntry(dst);}catch(e){}
+   if(same&&!copy)continue;
+   if(it.kind==='directory'){let rel=null;try{rel=await it.handle.resolve(dst);}catch(e){}if(rel!==null){fail.push('“'+it.name+'” cannot go inside itself');continue;}}
+   let nm=it.name;if(await fsExists(dst,nm))nm=await fsUnique(dst,nm);
+   if(!copy&&typeof it.handle.move==='function'){try{await it.handle.move(dst,nm);ok++;continue;}catch(e){}}
+   await fsCopy(parent,it.name,it.kind,dst,nm);if(!copy)await parent.removeEntry(it.name,{recursive:true});ok++;
+  }catch(e){fail.push('“'+it.name+'”: '+String(e&&e.message||e));}}
+ if(ok)toast((copy?'Copied ':'Moved ')+(ok===1?'“'+items[0].name+'”':ok+' items'),{ok:true,sub:fail.length?fail.join(' · '):''});else if(fail.length)toast('Nothing was '+(copy?'copied':'moved'),{sub:fail.join(' · '),ms:8000});
+ S.lfs.sel=new Set();lfReload();}
+function lfCopyCut(mode){const its=lfSelected();if(!its.length)return;S.lfs.clip={mode,items:its.map(i=>({name:i.name,kind:i.kind,handle:i.handle})),parent:S.lfs.hd};toast((mode==='cut'?'Cut ':'Copied ')+(its.length===1?'“'+its[0].name+'”':its.length+' items'),{sub:'Open a folder and press Ctrl+V or choose Paste.'});renderLibrary();}
+async function lfPaste(){const c=S.lfs.clip;if(!c)return;try{const d=await lfCurDir();await lfTransfer(c.parent,c.items,d,c.mode==='copy');if(c.mode==='cut')S.lfs.clip=null;}catch(e){toast('Could not paste',{sub:String(e&&e.message||e)});}}
+/* destination picker: every linked folder on this PC, with its sub-folders */
+function lfPickDest(title,verb){return new Promise(res=>{let done=false,chosen=null;const fin=v=>{if(done)return;done=true;m.close();res(v);};
+  const roots=[];const seen=new Set();
+  S.tree.projects.concat(S.tree.folders).forEach(it=>{if(it.lk&&LK.h[it.lk.id]&&!seen.has(it.lk.id)){seen.add(it.lk.id);roots.push({label:it.name+' — '+it.lk.name,hd:LK.h[it.lk.id]});}});
+  favFoldersArr().forEach(f=>{const hd=LK.h['fav-'+f.id];if(hd)roots.push({label:f.name+' (quick access)',hd});});
+  const list=h('div',{class:'lfpick'});
+  const mk=(hd,label,depth)=>{const row=h('div',{class:'lfpr',style:'padding-left:'+(8+depth*18)+'px'});const kids=h('div',{class:'hidden'});let loaded=false;
+   const tw=h('button',{class:'tw',type:'button','aria-label':'Expand',onclick:async e=>{e.stopPropagation();kids.classList.toggle('hidden');tw.classList.toggle('open');if(!loaded){loaded=true;try{const ds=[];for await(const[nm,x]of hd.entries())if(x.kind==='directory')ds.push([nm,x]);ds.sort((a,b)=>a[0].localeCompare(b[0]));ds.forEach(([nm,x])=>kids.append(mk(x,nm,depth+1)));if(!ds.length)kids.append(h('div',{class:'lfpe',style:'padding-left:'+(30+depth*18)+'px'},'No sub-folders'));}catch(er){}}}},icon('chevr',12));
+   const line=h('div',{class:'lfpl',onclick:()=>{$$('.lfpl.on',list).forEach(x=>x.classList.remove('on'));line.classList.add('on');chosen={hd,label};btn.disabled=false;}},tw,icon('folder',16),h('span',{class:'t'},label));
+   row.append(line,kids);return row;};
+  roots.forEach(r=>list.append(mk(r.hd,r.label,0)));
+  if(!roots.length)list.append(h('div',{class:'rempty'},'No linked folders yet. Link a folder to a project or folder first.'));
+  const btn=h('button',{class:'btn pri',disabled:true,onclick:()=>fin(chosen)},verb);
+  const m=modal({title,sub:'Choose the folder to put it in.',width:520,onclose:()=>{if(!done){done=true;res(null);}},body:()=>list,foot:[h('span',{class:'sp'}),h('button',{class:'btn',onclick:()=>fin(null)},'Cancel'),btn]});});}
+async function lfMoveCopyTo(items,copy){if(!items.length)return;const dst=await lfPickDest((copy?'Copy ':'Move ')+(items.length===1?'“'+items[0].name+'”':items.length+' items'),copy?'Copy here':'Move here');if(!dst)return;
+ try{const d=await lfCurDir();await lfTransfer(d,items.map(i=>({name:i.name,kind:i.kind,handle:i.handle})),dst.hd,copy);}catch(e){toast('Could not '+(copy?'copy':'move'),{sub:String(e&&e.message||e)});}}
+
+/* ---- menus ---- */
+function lfMenuFor(it){const st=S.lfs;const sel=st.sel.has(it.name)&&st.sel.size>1?lfSelected():[it];const multi=sel.length>1;const e=extOf(it.name);const R=lfRoot(lfSc());const m=[];
+ if(!multi){m.push({l:'Open',ic:it.kind==='directory'?'folder':'external',k:'Enter',fn:()=>lfOpen(it)});
+  if(it.kind!=='directory'){if(LF_TEXT.has(e))m.push({l:'Edit as text',ic:'pencil',fn:()=>lfEditText(it)});if(e==='pdf')m.push({l:'Study in ≠AdHD (adds a copy)',ic:'pdf',fn:async()=>{try{const f=await it.handle.getFile();const sc=lfSc();const tgt=sc.k==='fav'?{t:'home'}:{t:sc.k,id:sc.id};await pdfImport([f],tgt);}catch(er){toast('Could not add the PDF');}}});
+   if(/^(html?|txt|md|markdown)$/.test(e))m.push({l:'Open as a note',ic:'notes',fn:()=>importAsNote(it)});
+   m.push({l:'Open with the default program',ic:'external',disabled:!lfCanNative(it),fn:()=>lfNative(it,'o')});}
+  m.push({l:'Show in File Explorer',ic:'folder',fn:()=>lfNative(it,'s')},{sep:1});}
+ m.push({l:'Copy',ic:'copy',k:'Ctrl C',fn:()=>{st.sel=new Set(sel.map(i=>i.name));lfCopyCut('copy');}},{l:'Cut',ic:'cut',k:'Ctrl X',fn:()=>{st.sel=new Set(sel.map(i=>i.name));lfCopyCut('cut');}},
+  {l:'Move to…',ic:'move',fn:()=>lfMoveCopyTo(sel,false)},{l:'Copy to…',ic:'copy',fn:()=>lfMoveCopyTo(sel,true)});
+ if(!multi){m.push({l:'Rename…',ic:'rename',k:'F2',fn:()=>lfRename(it)});
+  if(it.kind==='file')m.push({l:'Download a copy',ic:'download',fn:async()=>{dl(await it.handle.getFile(),it.name);}});
+  m.push({l:'Copy path',ic:'link',disabled:!R.lk.path,fn:async()=>{try{await navigator.clipboard.writeText(lfPathOf(R,st,it.name));toast('Path copied');}catch(er){toast('Could not copy');}}});}
+ m.push({sep:1},{l:multi?'Delete '+sel.length+' items…':'Delete…',ic:'trash',k:'Del',fn:()=>lfDelete(sel)});return m;}
+
+/* ---- the page ---- */
+function lfCard(t,sub,btns){return h('div',{class:'xpcard'},h('div',{style:'font-size:16px;font-weight:700'},t),h('div',{style:'color:var(--ink2);margin:6px 0 14px;line-height:1.5;font-size:13.5px'},sub),h('div',{style:'display:flex;gap:8px;flex-wrap:wrap'},btns));}
+function renderLinkFiles(lv){const sc=lfSc();const R=lfRoot(sc);
+ if(!R){S.lib.scope={t:'home'};renderLibrary();return;}
+ const st=lfState(sc);const isFav=sc.k==='fav';
+ lv.classList.add('lfx');
+ const head=h('div',{class:'xphead'},h('div',null,h('h1',{class:'xph1'},R.title),h('div',{class:'xpsub'},isFav?'Quick access folder. Browse, rename, move, copy and delete files here.':'Linked files. This is the real folder on your PC, so changes here happen on disk.')));
+ lv.append(head);
+ if(!lkHasFS()){lv.append(h('div',{class:'note warn',style:'margin-top:16px'},'This page needs Edge or Chrome, because only they can open a folder on your PC.'));return;}
+ if(R.kind==='none'){lv.append(lfCard('No folder linked yet','Link “'+R.item.name+'” to a folder on this PC, for example one in OneDrive, and manage its files right here.',[h('button',{class:'btn pri',onclick:()=>lkDialog(sc.k,sc.id)},icon('link',14),'Link a folder…'),h('button',{class:'btn',onclick:()=>setScope({t:sc.k,id:sc.id})},'Back to notes')]));return;}
+ if(!R.hd){lv.append(lfCard('This folder is not linked on this device','The link is saved, but the folder itself has to be chosen again on this computer.',[h('button',{class:'btn pri',onclick:async()=>{const hd=await lkPick();if(!hd)return;if(isFav){await lkStore('fav-'+R.fav.id,hd);}else{await lkAttach(sc.k,sc.id,hd);}renderLibrary();}},icon('folder',14),'Choose the folder'),isFav?null:h('button',{class:'btn',onclick:()=>lkDialog(sc.k,sc.id)},'Settings')].filter(Boolean)));return;}
+ const perm=LK.perm[R.lk.id];
+ if(perm===undefined){lkPerm(R.lk,false).then(()=>{if(S.view==='library'&&lfSc().t==='files')renderLibrary();});lv.append(h('div',{class:'xpempty'},'Checking the folder…'));return;}
+ if(perm!=='granted'){lv.append(lfCard('The browser needs your OK again','Access to “'+R.lk.name+'” is paused until you allow it.',[h('button',{class:'btn pri',onclick:async()=>{await lkReconnect(R.lk.id);renderLibrary();}},'Reconnect')]));return;}
+ if(st.items===null&&!st.busy)setTimeout(()=>{if(S.lfs===st&&st.items===null&&!st.busy)lfReload();},0);
+ const crumbs=h('div',{class:'xpcrumbs',role:'navigation','aria-label':'Folder path'});
+ const dropOn=(el,getDir)=>{el.addEventListener('dragover',e=>{if(S.lfDrag||(e.dataTransfer&&[...e.dataTransfer.types].includes('Files'))){e.preventDefault();e.stopPropagation();el.classList.add('droptgt');e.dataTransfer.dropEffect=(e.ctrlKey||!S.lfDrag)?'copy':'move';}});el.addEventListener('dragleave',()=>el.classList.remove('droptgt'));
+  el.addEventListener('drop',async e=>{el.classList.remove('droptgt');const hasDrag=!!S.lfDrag,files=[...(e.dataTransfer&&e.dataTransfer.files||[])];if(!hasDrag&&!files.length)return;e.preventDefault();e.stopPropagation();
+   try{const dst=await getDir();if(!dst)return;if(hasDrag){const d=S.lfDrag;S.lfDrag=null;await lfTransfer(d.parent,d.items,dst,e.ctrlKey);}else await lfPutFiles(files,dst);}catch(er){toast('Could not drop here',{sub:String(er&&er.message||er)});}});};
+ const crumb=(label,n,last,ic)=>{const el=h(last?'span':'button',Object.assign({class:'cr'+(last?' cur':'')},last?{}:{onclick:()=>lfGoto(n)}),ic?icon(ic,14):null,ic?' '+label:label);if(!last)dropOn(el,()=>dirAt(R.hd,st.dirs.slice(0,n),false));return el;};
+ crumbs.append(crumb(R.name+(R.inherited?' (from '+R.e.it.name+')':''),0,!st.dirs.length,'folder'));
+ st.dirs.forEach((d,i)=>{crumbs.append(h('span',{class:'cs'},icon('chevr',12)));crumbs.append(crumb(d,i+1,i===st.dirs.length-1));});
+ const tab=h('div',{class:'xptab lftab',role:'grid','aria-label':'Files and folders',tabindex:'0'});
+ const search=h('input',{placeholder:'Filter this folder',value:st.q,'aria-label':'Filter this folder',oninput:e=>{st.q=e.target.value;lfRenderTable(tab);}});
+ const snapOn=isFav?false:effSnap(sc.k,sc.id);
+ const tb=h('div',{class:'xptb'},
+  h('button',{class:'btn',disabled:!st.dirs.length,title:'Up one folder (Backspace)','aria-label':'Up one folder',onclick:()=>lfGoto(st.dirs.length-1)},icon('up',14),'Up'),
+  h('label',{class:'fld'},icon('search'),search),h('span',{style:'flex:1'}),
+  h('button',{class:'btn',onclick:lfNewFolder},icon('folderplus',14),'New folder'),
+  h('button',{class:'btn',onclick:lfNewFile},icon('newfile',14),'New file'),
+  h('button',{class:'btn',onclick:lfAddFiles,title:'Copy files from your PC into this folder'},icon('upload',14),'Add files'),
+  h('button',{class:'btn',disabled:!st.clip,onclick:lfPaste,title:'Paste (Ctrl+V)'},icon('paste',14),'Paste'),
+  h('button',{class:'btn',title:'Read the folder again',onclick:()=>lfReload()},icon('restore',14),'Refresh'),
+  h('button',{class:'btn',title:'Show this folder in Windows File Explorer',onclick:lfRootOpenExplorer},icon('external',14),'Explorer'),
+  isFav?h('button',{class:'btn',onclick:()=>favFolderDialog(R.fav)},icon('gear',14),'Settings'):h('button',{class:'btn',onclick:()=>lkDialog(sc.k,sc.id)},icon('gear',14),'Folder settings'));
+ lv.append(crumbs,tb);
+ if(!isFav)lv.append(h('div',{class:'lfsnap'},icon('camera',14),h('span',null,snapOn?'Screenshots are also saved to ':'Screenshot dump is off for this '+sc.k+'. '),snapOn?h('b',null,R.name+'\\Snapshot'):null,h('button',{class:'btn sm',onclick:()=>{R.item.snap=!snapOn;saveTree();renderLibrary();}},snapOn?'Turn off':'Turn on'),h('button',{class:'btn sm',onclick:()=>setScope({t:sc.k,id:sc.id}),style:'margin-left:auto'},'Notes in this '+sc.k)));
+ lv.append(tab);lfRenderTable(tab);dropOn(tab,()=>lfCurDir());
+ tab.addEventListener('keydown',lfKey);
+ const its=st.items||[],nf=its.filter(i=>i.kind==='directory').length,nfi=its.length-nf;
+ lv.append(h('div',{class:'xpfoot',id:'lffoot'},st.busy?'Reading…':(nf+(nf===1?' folder':' folders')+' · '+nfi+(nfi===1?' file':' files')+' · '+fmtSize(its.reduce((s,i)=>s+i.size,0))+(st.sel.size?' · '+st.sel.size+' selected':'')+(st.clip?' · '+st.clip.items.length+' on the clipboard ('+st.clip.mode+')':''))));}
+function lfViewList(){const st=S.lfs;let items=(st.items||[]).slice();const q=st.q.trim().toLowerCase();if(q)items=items.filter(it=>it.name.toLowerCase().includes(q));const dir=st.asc?1:-1;
+ items.sort((a,b)=>{if((a.kind==='directory')!==(b.kind==='directory'))return a.kind==='directory'?-1:1;let r=0;if(st.sort==='size')r=a.size-b.size;else if(st.sort==='mod')r=a.mod-b.mod;else if(st.sort==='type')r=lfType(a).localeCompare(lfType(b));return(r||a.name.localeCompare(b.name,undefined,{numeric:true,sensitivity:'base'}))*dir;});return items;}
+function lfRenderTable(box){const st=S.lfs;box.innerHTML='';
+ const hb=(k,l)=>h('button',{onclick:()=>{if(st.sort===k)st.asc=!st.asc;else{st.sort=k;st.asc=true;}lfRenderTable(box);},'aria-label':'Sort by '+l},l,st.sort===k?icon(st.asc?'chevu':'chev',11):null);
+ const all=h('input',{type:'checkbox','aria-label':'Select all',onchange:e=>{st.sel=e.target.checked?new Set(st.view.map(i=>i.name)):new Set();lfRenderTable(box);lfFoot();}});
+ box.append(h('div',{class:'xprow lfrow hd',role:'row'},h('span',{class:'lfck'},all),hb('name','Name'),h('div',{class:'xpty'},hb('type','Type')),h('div',null,hb('size','Size')),h('div',{class:'xpmd'},hb('mod','Modified')),h('span')));
+ if(st.items===null||(st.busy&&!(st.items||[]).length)){box.append(h('div',{class:'xpempty'},'Reading the folder…'));return;}
+ if(st.err){box.append(h('div',{class:'xpempty'},'Could not read this folder: '+st.err));return;}
+ st.view=lfViewList();all.checked=st.view.length>0&&st.view.every(i=>st.sel.has(i.name));
+ if(!st.view.length){box.append(h('div',{class:'xpempty'},st.q?'Nothing here matches.':'This folder is empty. Drop files here, or use Add files.'));return;}
+ st.view.forEach((it,idx)=>box.append(lfRow(it,idx,box)));}
+function lfFoot(){const f=$('#lffoot');if(!f)return;const st=S.lfs;const its=st.items||[],nf=its.filter(i=>i.kind==='directory').length,nfi=its.length-nf;f.textContent=nf+(nf===1?' folder':' folders')+' · '+nfi+(nfi===1?' file':' files')+' · '+fmtSize(its.reduce((s,i)=>s+i.size,0))+(st.sel.size?' · '+st.sel.size+' selected':'')+(st.clip?' · '+st.clip.items.length+' on the clipboard ('+st.clip.mode+')':'');}
+function lfRow(it,idx,box){const st=S.lfs;const isDir=it.kind==='directory';const ic=lfIconFor(it);const on=st.sel.has(it.name);
+ const ck=h('input',{type:'checkbox',checked:on,'aria-label':'Select '+it.name,onclick:e=>e.stopPropagation(),onchange:e=>{if(e.target.checked)st.sel.add(it.name);else st.sel.delete(it.name);st.cur=idx;lfRenderTable(box);lfFoot();}});
+ const row=h('div',{class:'xprow lfrow'+(on?' sel':'')+(st.clip&&st.clip.mode==='cut'&&st.clip.items.some(c=>c.name===it.name&&c.parent===st.hd)?' cutrow':''),role:'row','data-name':it.name,draggable:'true',
+  onclick:e=>{if(e.target.closest('.xpmore,.lfck'))return;
+   if(e.shiftKey&&st.cur>=0){const a=Math.min(st.cur,idx),b=Math.max(st.cur,idx);st.sel=new Set(st.view.slice(a,b+1).map(i=>i.name));}
+   else if(e.ctrlKey||e.metaKey){if(st.sel.has(it.name))st.sel.delete(it.name);else st.sel.add(it.name);st.cur=idx;}
+   else{st.sel=new Set([it.name]);st.cur=idx;}
+   lfRenderTable(box);lfFoot();box.focus({preventScroll:true});},
+  ondblclick:e=>{if(e.target.closest('.xpmore,.lfck'))return;lfOpen(it);},
+  oncontextmenu:e=>{e.preventDefault();if(!st.sel.has(it.name)){st.sel=new Set([it.name]);st.cur=idx;lfRenderTable(box);lfFoot();}showMenu(lfMenuFor(it),e.clientX,e.clientY);},
+  ondragstart:e=>{if(!st.sel.has(it.name)){st.sel=new Set([it.name]);}const items=lfSelected().map(i=>({name:i.name,kind:i.kind,handle:i.handle}));S.lfDrag={items,parent:st.hd};e.dataTransfer.setData('text/lf','1');e.dataTransfer.effectAllowed='copyMove';},
+  ondragend:()=>{S.lfDrag=null;$$('.droptgt').forEach(x=>x.classList.remove('droptgt'));}},
+  h('span',{class:'lfck'},ck),
+  h('div',{class:'xpn'},h('span',{class:'xpi '+(ic[1]&&ic[1].length<4?ic[1]:''),style:ic[1]&&ic[1].length>=4?'color:'+ic[1]:''},icon(ic[0],20)),h('div',{class:'xpt'},h('b',null,it.name))),
+  h('div',{class:'xpty'},lfType(it)),h('div',{class:'xpsz'},isDir?'':fmtSize(it.size)),
+  h('div',{class:'xpmd'},it.mod?new Date(it.mod).toLocaleString(undefined,{day:'numeric',month:'short',year:'numeric',hour:'numeric',minute:'2-digit'}):''),
+  h('button',{class:'tb xpmore','aria-label':'More actions for '+it.name,title:'More actions',onclick:e=>{e.stopPropagation();if(!st.sel.has(it.name)){st.sel=new Set([it.name]);st.cur=idx;lfRenderTable(box);lfFoot();}popMenu(e.currentTarget,lfMenuFor(it),{right:true});}},icon('more',16)));
+ if(isDir){row.addEventListener('dragover',e=>{if((S.lfDrag&&!S.lfDrag.items.some(i=>i.name===it.name))||(e.dataTransfer&&[...e.dataTransfer.types].includes('Files'))){e.preventDefault();e.stopPropagation();row.classList.add('droptgt');e.dataTransfer.dropEffect=(e.ctrlKey||!S.lfDrag)?'copy':'move';}});
+  row.addEventListener('dragleave',()=>row.classList.remove('droptgt'));
+  row.addEventListener('drop',async e=>{row.classList.remove('droptgt');const hasDrag=!!S.lfDrag,files=[...(e.dataTransfer&&e.dataTransfer.files||[])];if(!hasDrag&&!files.length)return;e.preventDefault();e.stopPropagation();
+   try{if(hasDrag){const d=S.lfDrag;S.lfDrag=null;await lfTransfer(d.parent,d.items,it.handle,e.ctrlKey);}else await lfPutFiles(files,it.handle);}catch(er){toast('Could not drop here',{sub:String(er&&er.message||er)});}});}
+ return row;}
+function lfKey(e){const st=S.lfs;if(!st||e.target.closest('input,textarea'))return;const box=e.currentTarget;const v=st.view||[];
+ const sel1=()=>{const it=lfSelected();return it.length===1?it[0]:null;};
+ if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();if(!v.length)return;let i=st.cur<0?(e.key==='ArrowDown'?0:v.length-1):Math.max(0,Math.min(v.length-1,st.cur+(e.key==='ArrowDown'?1:-1)));
+  if(e.shiftKey&&st.cur>=0){const a=Math.min(st.cur,i),b=Math.max(st.cur,i);st.sel=new Set(v.slice(a,b+1).map(x=>x.name));}else st.sel=new Set([v[i].name]);st.cur=i;lfRenderTable(box);lfFoot();const r=$('.xprow.sel',box);if(r)r.scrollIntoView({block:'nearest'});}
+ else if(e.key==='Enter'){const it=sel1();if(it){e.preventDefault();lfOpen(it);}}
+ else if(e.key==='F2'){const it=sel1();if(it){e.preventDefault();lfRename(it);}}
+ else if(e.key==='Delete'){const its=lfSelected();if(its.length){e.preventDefault();lfDelete(its);}}
+ else if(e.key==='Backspace'){if(st.dirs.length){e.preventDefault();lfGoto(st.dirs.length-1);}}
+ else if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='a'){e.preventDefault();st.sel=new Set(v.map(x=>x.name));lfRenderTable(box);lfFoot();}
+ else if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='c'){e.preventDefault();lfCopyCut('copy');}
+ else if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='x'){e.preventDefault();lfCopyCut('cut');}
+ else if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='v'){e.preventDefault();lfPaste();}
+ else if(e.key==='Escape'){st.sel=new Set();lfRenderTable(box);lfFoot();}}
+
+/* ---- launcher list: linked folders and favourite folders that have a PC path ---- */
+function lkLauncherLines(){const out=[];const c=v=>String(v||'').replace(/[\t\r\n]+/g,' ');const seen=new Set();
+ S.tree.projects.concat(S.tree.folders).forEach(it=>{if(it.lk&&it.lk.path&&!seen.has(it.lk.id)){seen.add(it.lk.id);out.push([it.lk.id,c(cleanPath(it.lk.path)),'','','ROOT'].join('\t'));}});
+ favFoldersArr().forEach(f=>{if(f.path)out.push([f.id,c(cleanPath(f.path)),'','','ROOT'].join('\t'));});return out;}
+/* ---- clean up when a linked project or folder is deleted (files on the PC are never touched) ---- */
+(function(){const df=deleteFolder,dp=deleteProject;
+ deleteFolder=async function(id){const ids=[id].concat(descFolders(id).map(f=>f.id)).map(i=>fold(i)&&fold(i).lk&&fold(i).lk.id).filter(Boolean);const r=await df.apply(this,arguments);if(!fold(id))ids.forEach(lkForget);return r;};
+ deleteProject=async function(id){const p=proj(id);const ids=[p&&p.lk&&p.lk.id].concat(S.tree.folders.filter(f=>f.project===id&&f.lk).map(f=>f.lk.id)).filter(Boolean);const r=await dp.apply(this,arguments);if(!proj(id))ids.forEach(lkForget);return r;};})();
+
+/* =====================================================================
+   v2.5: Favourite web links, Favourite folders (quick access), icon-only top buttons
+   ===================================================================== */
+function favWebArr(){S.settings.favWeb=S.settings.favWeb||[];return S.settings.favWeb;}
+const FAV_EMOJI=['','⭐','📁','🌐','📊','📧','🛠️','🔧','📅','💬','📄','🏭','⚙️','🔒','☁️','🧪'];
+function favNewId(){return uid().replace(/[^a-z0-9]/gi,'').slice(0,12);}
+function favTile(a,pop,kind){const sub=kind==='web'?a.url:(a.path||(LK.h['fav-'+a.id]?'Browse in ≠AdHD':''));
+ const open=()=>{if(pop)pop.close();kind==='web'?openWebFav(a):openFolderFav(a);};
+ return h('div',{class:'apptile',role:'button',tabindex:'0',title:sub,onclick:e=>{if(e.target.closest('.amore'))return;open();},onkeydown:e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}},oncontextmenu:e=>{e.preventDefault();favMenu(a,kind,e.clientX,e.clientY,pop);}},
+  h('div',{class:'aico',style:'background:'+(a.color||APP_COLORS[0])},a.icon||(a.name||'?').trim().charAt(0).toUpperCase()),h('div',{class:'anm'},a.name),
+  h('button',{class:'tb amore','aria-label':'More','data-more':1,onclick:e=>{e.stopPropagation();const r=e.currentTarget.getBoundingClientRect();favMenu(a,kind,r.left,r.bottom,pop);}},icon('more',14)));}
+function favMenu(a,kind,x,y,pop){const arr=kind==='web'?favWebArr():favFoldersArr(),i=arr.findIndex(q=>q.id===a.id);const items=[];
+ if(kind==='web')items.push({l:'Open',ic:'external',fn:()=>{pop&&pop.close();openWebFav(a);}},{l:'Open without sending the referrer',ic:'globe',fn:()=>{pop&&pop.close();window.open(a.url,'_blank','noopener,noreferrer');}},{l:'Copy address',ic:'copy',fn:async()=>{try{await navigator.clipboard.writeText(a.url);toast('Address copied');}catch(e){toast('Could not copy');}}});
+ else{items.push({l:'Open',ic:'folder',fn:()=>{pop&&pop.close();openFolderFav(a);}});if(LK.h['fav-'+a.id])items.push({l:'Browse in ≠AdHD',ic:'favfolder',fn:()=>{pop&&pop.close();setScope({t:'files',k:'fav',id:a.id});}});if(a.path)items.push({l:'Open in File Explorer',ic:'external',fn:()=>{pop&&pop.close();launchFolderPath(a);}},{l:'Copy path',ic:'copy',fn:async()=>{try{await navigator.clipboard.writeText(a.path);toast('Path copied');}catch(e){toast('Could not copy');}}});}
+ items.push({l:'Edit…',ic:'rename',fn:()=>(kind==='web'?favWebDialog(a):favFolderDialog(a)).then(r=>{if(r&&pop)pop.render();})},{l:'Move left',ic:'arrowl',disabled:i<=0,fn:()=>{arr.splice(i-1,0,arr.splice(i,1)[0]);favChanged();pop&&pop.render();}},{l:'Move right',ic:'arrowr',disabled:i>=arr.length-1,fn:()=>{arr.splice(i+1,0,arr.splice(i,1)[0]);favChanged();pop&&pop.render();}},{sep:1},
+  {l:'Remove from favourites',ic:'trash',fn:async()=>{if(kind==='web')S.settings.favWeb=arr.filter(q=>q.id!==a.id);else{S.settings.favFolders=arr.filter(q=>q.id!==a.id);await lkForget('fav-'+a.id);}favChanged();pop&&pop.render();}});
+ showMenu(items,x,y);}
+function favChanged(){saveSettings();if(typeof launcherSync==='function')launcherSync(false);}
+function normUrl(u){u=String(u||'').trim();if(!u)return'';if(/^[a-z][a-z0-9+.-]*:/i.test(u))return u;if(/^\\\\|^[a-z]:\\/i.test(u))return u;return'https://'+u.replace(/^\/+/,'');}
+function openWebFav(a){const u=normUrl(a.url);if(!u)return;if(/^https?:/i.test(u))window.open(u,'_blank','noopener');else if(isUriTarget(u))launchProtocol(u);else launchApp({id:a.id,name:a.name,target:u});toast('Opening '+a.name);}
+function openFolderFav(a){if(LK.h['fav-'+a.id]){setScope({t:'files',k:'fav',id:a.id});return;}if(a.path){launchFolderPath(a);return;}toast('This shortcut has no folder yet',{sub:'Edit it and choose a folder or paste a path.',actions:[{l:'Edit',p:1,fn:()=>favFolderDialog(a)}]});}
+function launchFolderPath(a){const L=S.settings.launcher||{};if(!L.ready){toast('One-time setup needed',{sub:'Windows only lets a web page open your folders through a small launcher.',actions:[{l:'Set up',p:1,fn:launcherDialog}],ms:9000});return;}
+ if((L.ver||1)<2){toast('Update the launcher once',{sub:'Save the launcher files again (Apps > gear) so folders can open.',actions:[{l:'Open setup',p:1,fn:launcherDialog}],ms:10000});return;}
+ launchProtocol('adhdrun:'+a.id+'?m=f');toast('Opening '+a.name,{sub:'If nothing happens, allow ≠AdHD to open the launcher when the browser asks.'});}
+
+/* ---- popovers (same look as Favourite apps) ---- */
+const FAVPOP={web:null,folders:null};
+function openFavPop(kind,anchor){if(FAVPOP[kind]){FAVPOP[kind].close();return;}closeAppsPop();['web','folders'].forEach(k=>{if(k!==kind&&FAVPOP[k])FAVPOP[k].close();});
+ const btnId=kind==='web'?'#webBtn':'#foldBtn';const title=kind==='web'?'Favourite web links':'Favourite folders';
+ const el=h('div',{class:'appspop',role:'dialog','aria-label':title});
+ const pop={el,render,close(){el.remove();document.removeEventListener('mousedown',out,true);document.removeEventListener('keydown',key,true);FAVPOP[kind]=null;const b=$(btnId);b&&b.classList.remove('on');}};
+ function out(e){if(el.contains(e.target)||e.target.closest(btnId)||e.target.closest('.menu')||e.target.closest('#modals'))return;pop.close();}
+ function key(e){if(e.key==='Escape'&&!$('#modals').children.length&&!document.querySelector('.menu')){e.stopPropagation();pop.close();}}
+ function render(){el.innerHTML='';const arr=kind==='web'?favWebArr():favFoldersArr();
+  el.append(h('div',{class:'aph'},h('b',null,title),h('button',{class:'btn sm',onclick:async()=>{const r=await(kind==='web'?favWebDialog(null):favFolderDialog(null));if(r)render();}},icon('plus',13),'Add')));
+  if(!arr.length)el.append(h('div',{class:'appempty'},kind==='web'?'Add the websites you open every day, such as SAP Fiori, SharePoint or Power BI, and open them from here.':'Add folders you use all the time, like File Explorer’s Quick access. Browse them inside ≠AdHD, or open them in File Explorer.'));
+  else el.append(h('div',{class:'appgrid'},arr.map(a=>favTile(a,pop,kind))));}
+ render();document.body.append(el);const r=anchor.getBoundingClientRect();el.style.top=(r.bottom+8)+'px';el.style.left=Math.max(10,Math.min(innerWidth-el.offsetWidth-10,r.right-el.offsetWidth))+'px';anchor.classList.add('on');
+ setTimeout(()=>{document.addEventListener('mousedown',out,true);document.addEventListener('keydown',key,true);},0);FAVPOP[kind]=pop;}
+
+/* ---- dialogs ---- */
+function favPickers(a,onChange){const emoWrap=h('div',{class:'emojis'});const swWrap=h('div',{style:'display:flex;gap:8px;flex-wrap:wrap'});
+ const draw=()=>{emoWrap.innerHTML='';FAV_EMOJI.forEach(e=>emoWrap.append(h('button',{class:a.icon===e?'on':'',type:'button',title:e||'First letter of the name',onclick:()=>{a.icon=e;draw();}},e||'Aa')));swWrap.innerHTML='';APP_COLORS.forEach(c=>swWrap.append(h('button',{class:'sw'+(a.color===c?' on':''),type:'button',style:'background:'+c+';width:26px;height:26px','aria-label':c,onclick:()=>{a.color=c;draw();}})));};draw();return[emoWrap,swWrap];}
+function favWebDialog(existing){return new Promise(res=>{const arr=favWebArr();const a=existing?Object.assign({},existing):{id:favNewId(),name:'',url:'',icon:'',color:APP_COLORS[arr.length%APP_COLORS.length]};let done=false;
+  const nm=h('input',{value:a.name,placeholder:'Name, e.g. SAP Fiori','aria-label':'Name'});const ur=h('input',{value:a.url,placeholder:'https://…','aria-label':'Web address',spellcheck:'false'});const[emo,sw]=favPickers(a);
+  const fin=v=>{if(done)return;done=true;m.close();res(v);};
+  const save=()=>{const u=normUrl(ur.value);if(!u){toast('Enter the web address');ur.focus();return;}let n=nm.value.trim();if(!n){try{n=new URL(u).hostname.replace(/^www\./,'');}catch(e){n=u;}}a.name=n;a.url=u;const i=arr.findIndex(q=>q.id===a.id);if(i>=0)arr[i]=a;else arr.push(a);favChanged();fin(a);};
+  const m=modal({title:existing?'Edit favourite link':'Add a favourite web link',sub:'Opens in a new browser tab.',width:500,onclose:()=>{if(!done){done=true;res(null);}},body:()=>h('div',{style:'display:flex;flex-direction:column;gap:14px'},
+    h('div',null,h('div',{class:'lab',style:'margin-bottom:6px'},'Name'),h('label',{class:'fld'},nm)),h('div',null,h('div',{class:'lab',style:'margin-bottom:6px'},'Web address'),h('label',{class:'fld'},ur)),
+    h('div',null,h('div',{class:'lab',style:'margin-bottom:6px'},'Icon'),emo),h('div',null,h('div',{class:'lab',style:'margin-bottom:6px'},'Colour'),sw)),
+   foot:[existing?h('button',{class:'btn danger',onclick:()=>{S.settings.favWeb=arr.filter(q=>q.id!==a.id);favChanged();fin(true);}},'Remove'):null,h('span',{class:'sp'}),h('button',{class:'btn',onclick:()=>fin(null)},'Cancel'),h('button',{class:'btn pri',onclick:save},existing?'Save':'Add link')].filter(Boolean)});
+  [nm,ur].forEach(i=>i.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();save();}}));setTimeout(()=>(existing?ur:nm).focus(),40);});}
+function favFolderDialog(existing){return new Promise(res=>{const arr=favFoldersArr();const a=existing?Object.assign({},existing):{id:favNewId(),name:'',path:'',icon:'',color:APP_COLORS[(arr.length+3)%APP_COLORS.length]};let done=false,newHd=null,dropHd=false;
+  const nm=h('input',{value:a.name,placeholder:'Name, e.g. Maintenance reports','aria-label':'Name'});const pa=h('input',{value:a.path||'',placeholder:'Optional, e.g. C:\\Users\\you\\OneDrive - Company\\Reports','aria-label':'Folder path',spellcheck:'false'});const[emo,sw]=favPickers(a);
+  const hasH=()=>!!(newHd||(existing&&LK.h['fav-'+a.id]&&!dropHd));
+  const info=h('div',{style:'font-size:12.5px;color:var(--ink2)'});const upd=()=>{info.textContent=hasH()?'Folder chosen: '+((newHd&&newHd.name)||(LK.h['fav-'+a.id]&&LK.h['fav-'+a.id].name)||'')+'. Click opens it inside ≠AdHD.':'No folder chosen. Click will open File Explorer using the path.';};upd();
+  const pick=h('button',{class:'btn',type:'button',onclick:async()=>{const hd=await lkPick();if(!hd)return;newHd=hd;dropHd=false;if(!nm.value.trim())nm.value=hd.name;upd();}},icon('folder',14),'Choose a folder to browse in ≠AdHD');
+  const clr=h('button',{class:'btn sm',type:'button',onclick:()=>{newHd=null;dropHd=true;upd();}},'Clear');
+  const fin=v=>{if(done)return;done=true;m.close();res(v);};
+  const save=async()=>{const p=cleanPath(pa.value);if(!hasH()&&!p){toast('Choose a folder or paste a path');return;}a.name=nm.value.trim()||(newHd&&newHd.name)||p.split(/[\\/]/).filter(Boolean).pop()||'Folder';a.path=p;
+   if(newHd)await lkStore('fav-'+a.id,newHd);else if(dropHd)await lkForget('fav-'+a.id);
+   const i=arr.findIndex(q=>q.id===a.id);if(i>=0)arr[i]=a;else arr.push(a);favChanged();fin(a);};
+  const m=modal({title:existing?'Edit favourite folder':'Add a favourite folder',sub:'A shortcut like File Explorer’s Quick access.',width:540,onclick:null,onclose:()=>{if(!done){done=true;res(null);}},body:()=>h('div',{style:'display:flex;flex-direction:column;gap:14px'},
+    h('div',null,h('div',{class:'lab',style:'margin-bottom:6px'},'Name'),h('label',{class:'fld'},nm)),
+    h('div',null,h('div',{style:'display:flex;gap:8px;align-items:center;flex-wrap:wrap'},lkHasFS()?pick:null,clr),info),
+    h('div',null,h('div',{class:'lab',style:'margin-bottom:6px'},'Path on this PC (opens it in File Explorer)'),h('label',{class:'fld'},pa),h('div',{style:'font-size:12px;color:var(--mute);margin-top:6px;line-height:1.5'},'In File Explorer, Shift + right-click the folder and choose “Copy as path”. Opening in File Explorer needs the one-time launcher (Apps > gear). Network paths such as \\\\server\\share work too.')),
+    h('div',null,h('div',{class:'lab',style:'margin-bottom:6px'},'Icon'),emo),h('div',null,h('div',{class:'lab',style:'margin-bottom:6px'},'Colour'),sw)),
+   foot:[existing?h('button',{class:'btn danger',onclick:async()=>{S.settings.favFolders=arr.filter(q=>q.id!==a.id);await lkForget('fav-'+a.id);favChanged();fin(true);}},'Remove'):null,h('span',{class:'sp'}),h('button',{class:'btn',onclick:()=>fin(null)},'Cancel'),h('button',{class:'btn pri',onclick:save},existing?'Save':'Add folder')].filter(Boolean)});
+  [nm,pa].forEach(i=>i.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();save();}}));setTimeout(()=>nm.focus(),40);});}
+
+/* ---- top bar: icon-only buttons ---- */
+function initV25(){
+ const mk=(id,ic,title,fn)=>{const b=$(id);if(b&&!b.firstChild){b.append(icon(ic,16));b.title=title;b.setAttribute('aria-label',title);b.onclick=()=>fn(b);}};
+ const ab=$('#appsBtn');if(ab){ab.innerHTML='';ab.classList.add('ibtn');ab.append(icon('rocket',16));ab.title='Favourite apps';ab.setAttribute('aria-label','Favourite apps');}
+ mk('#webBtn','favweb','Favourite web links',b=>openFavPop('web',b));mk('#foldBtn','favfolder','Favourite folders',b=>openFavPop('folders',b));
+ const ai=$('#aiBtn');if(ai){ai.innerHTML='';ai.classList.add('ibtn');ai.append(icon('spark',16));ai.title='Copy for AI';ai.setAttribute('aria-label','Copy for AI');}
+ const pg=$('#addPageBtn');if(pg){pg.innerHTML='';pg.classList.add('ibtn');pg.append(icon('pages',16));pg.title='Add a page after this one (Alt+P)';pg.setAttribute('aria-label','Add a page');}
+document.addEventListener('pointermove',e=>{if(!/^liquid/.test(document.body.dataset.skin||''))return;const t=e.target.closest&&e.target.closest('.btn,.tb');if(!t)return;const r=t.getBoundingClientRect();t.style.setProperty('--mx',(e.clientX-r.left)+'px');t.style.setProperty('--my',(e.clientY-r.top)+'px');},{passive:true});
+ lkLoadHandles().then(()=>{if(S.view==='library'&&S.lib.scope.t==='files')renderLibrary();});
+ S.settings.favWeb=S.settings.favWeb||[];S.settings.favFolders=S.settings.favFolders||[];}
+function v25Cmds(){const c=[{l:'Favourite web links…',fn:()=>openFavPop('web',$('#webBtn'))},{l:'Add a favourite web link…',fn:()=>favWebDialog(null)},{l:'Favourite folders…',fn:()=>openFavPop('folders',$('#foldBtn'))},{l:'Add a favourite folder…',fn:()=>favFolderDialog(null)}];
+ S.tree.projects.concat(S.tree.folders).forEach(it=>{if(effLink(S.tree.projects.includes(it)?'project':'folder',it.id))c.push({l:'Linked files: '+it.name,fn:()=>lkOpenFiles(S.tree.projects.includes(it)?'project':'folder',it.id)});});
+ favWebArr().forEach(a=>c.push({l:'Open link: '+a.name,fn:()=>openWebFav(a)}));favFoldersArr().forEach(a=>c.push({l:'Open folder: '+a.name,fn:()=>openFolderFav(a)}));
+ c.push({l:'Toggle left pane',fn:toggleRail},{l:'Toggle right pane',fn:toggleAside});return c;}
+
+/* ---- right pane: click an empty part or its edge to collapse or open, like the left pane ---- */
+function toggleAside(){if(S.view!=='note')return;S.settings.asideCollapsed=!S.settings.asideCollapsed;saveSettings();applyAside();refreshAside();}
+function asideBlankClick(e){const t=e.target,a=$('#aside');if(!a||!t||t.closest('button,input,select,textarea,a,.pgrow,.orow,.otile,.trow'))return;
+ if(t===a||(t.classList&&(t.classList.contains('abody')||t.classList.contains('atabs')||t.classList.contains('rempty')||t.classList.contains('pgpanel'))))toggleAside();}
+function asideEdge(){const a=$('#aside');if(!a||a.querySelector('.asideedge'))return;a.onclick=asideBlankClick;
+ a.append(h('button',{class:'asideedge',tabindex:'-1',title:S.settings.asideCollapsed?'Click to open the right pane':'Click to collapse the right pane','aria-label':S.settings.asideCollapsed?'Open the right pane':'Collapse the right pane',onclick:e=>{e.stopPropagation();toggleAside();}}));}
 
 /* =====================================================================
    PDF study: library side (storage, import, rows, cards, menus)
@@ -3480,7 +4053,7 @@ function pdfsIn(project,folder){return livePdfs().filter(p=>(p.project||'')===(p
 let pdfMetaTimer=null;
 function savePdfs(){clearTimeout(pdfMetaTimer);pdfMetaTimer=setTimeout(()=>{DB.put('meta',{k:'pdfs',v:S.pdfs.map(p=>Object.assign({},p))});},200);}
 function pdfLoc(p){const l=locLabel({project:p.project,folder:p.folder});return l==='Notes'?'Library':l;}
-function scopeLoc(sc){sc=sc||S.lib.scope||{t:'home'};if(sc.t==='project')return{project:sc.id,folder:''};if(sc.t==='folder'&&fold(sc.id))return{project:fold(sc.id).project||'',folder:sc.id};return{project:'',folder:''};}
+function scopeLoc(sc){sc=lkScopeAsLib(sc||S.lib.scope||{t:'home'});if(sc.t==='project')return{project:sc.id,folder:''};if(sc.t==='folder'&&fold(sc.id))return{project:fold(sc.id).project||'',folder:sc.id};return{project:'',folder:''};}
 
 /* ---- the PDF engine (pdf.js and pdf-lib are embedded, compressed, so this works offline and from a local file) ---- */
 async function gunzipText(id){const el=document.getElementById(id);if(!el)throw new Error('The PDF engine is missing from this build.');

@@ -1,5 +1,5 @@
 /* ≠AdHD offline service worker. Bump VERSION on each release so old caches are cleared. */
-const VERSION = 'adhd-2.4.0';
+const VERSION = 'adhd-2.5.0';
 const SCOPE = self.registration.scope;
 const INDEX = new URL('index.html', SCOPE).href;
 const SHELL = ['./', 'index.html', 'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/icon-maskable-512.png', 'icons/icon.svg'];
