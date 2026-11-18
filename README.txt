@@ -1,4 +1,4 @@
-≠AdHD v2.5.0 - GitHub Pages bundle
+≠AdHD v2.10.0 - GitHub Pages bundle
 ================================
 
 Files (keep this exact layout, everything uses relative paths):
@@ -26,6 +26,68 @@ Important: your notes are NOT uploaded
   The hosted app (github.io) is a different place from a local AdHD.html file, so it
   starts empty. To bring your notes over: open the hosted app, choose the SAME save
   folder (Save folder > Choose folder), then press "Restore all notes from a save folder".
+
+What changed in 2.10.0
+  - Smoother, calmer motion: dialogs, menus, toasts and views fade and slide in quickly and leave faster than they arrive;
+    bottom sheets slide up on phones; buttons give a small press feedback; cards lift slightly on hover.
+  - One clear keyboard focus ring on buttons, switches and links.
+  - Animations follow your device's "reduce motion" setting. To override: Ctrl K > "Animations: always on / off / follow my device setting".
+
+What changed in 2.9.0
+  - Split view: the "Split" button in the top bar shows 2 or 3 panes side by side. Each pane is a full copy of the app
+    (notes, library, PDFs), so each can show a different note. Drag the dividers to resize (double-click resets).
+    Right-click a note, folder, project or PDF > "Open in split view". Pane buttons: swap with the main pane, open in
+    its own window, close. Edits show up in the other panes. The layout is remembered. Needs a window wider than 900 px.
+  - Mobile and tablet: under 900 px the left and right panes become slide-in drawers (menu and tools buttons in the top bar),
+    the note fits the screen width on open, pinch to zoom, long-press for the right-click menu, and a bar with Menu / Edit /
+    Delete / Done appears when you select an object. Under 700 px menus and dialogs become bottom sheets, the format bar
+    scrolls sideways and the less-used top buttons move into a "..." menu. "Reader view" (in the "..." menu) shows the note as
+    plain, easy-to-read text. Desktop layout is unchanged.
+    Tip: install it from the browser menu (Add to Home screen) so notes are not cleared by the browser.
+
+What changed in 2.8.0
+  - Code blocks are now a small code editor: six themes (Dark+, Light+, Monokai, GitHub Dark, Solarized Light, High contrast),
+    colours for functions, types and tags, and 10 more languages (TypeScript, CSS, C#, Java, C/C++, Bash, PowerShell, XML, YAML, Markdown).
+    "Style" button: theme, font size, indent size, auto-close brackets, current-line highlight, "use as my default",
+    Download as a file, Copy as Markdown. "Expand" opens the block full window (Esc to close).
+    Keys: Tab / Shift+Tab indent lines, Ctrl+/ comment, Alt+Up/Down move line, Ctrl+Shift+D duplicate line, smart Enter.
+    A status line shows line, column, indent and language. Shared HTML and PDF now show the code in colour.
+  - New Q&A block (right-click > Q&A block): a question and an answer section, each with long text and photos
+    (paste, drop or + Photo). Stacked or side by side, and "Hide answer" for study mode. Included in every export.
+
+What changed in 2.7.0
+  - Open in a new window: right-click a note, folder, project or PDF > "Open in a new window". Windows stay in sync
+    (a note saved in one window refreshes in the other; if you have unsaved edits you are asked first).
+  - PDF export: pictures keep their original quality (no compression). Choose "As on the canvas", "A4 pages" or "Letter pages".
+    Page scope (this page / all pages) now applies to PDF too.
+  - Pictures you add from now on keep their original size and quality.
+  - Clean export (Save / Share): remove doodles, captions, step badges, shapes, sticky notes, highlights, header info and footer credit.
+    Blurred areas always stay blurred.
+  - Copy for AI is now a prompt builder: presets, scope (note, folder, project), background, constraints, answer format,
+    preview with token estimate, Copy / Save .md / Save AI pack (.zip with pictures and files).
+
+What changed in 2.6.0
+  - View button (grid icon) on the library and on every Files page:
+      Library: Cards, Gallery, Icons, List, Compact, Details.
+      Files: Details, List, Tiles, Icons, Content, Gallery (with image thumbnails).
+      Icon size and card width sliders, spacing (tight/normal/roomy), item style
+      (soft, flat, outline, raised, tinted, glass), name lines, which columns to show,
+      file extensions on/off, folders first, group by kind / date / size, sort,
+      one-click presets, and "remember for this folder only".
+  - Icon library: all 1,544 Lucide icons (searchable, 15 groups), emoji and 1-2 letter
+    badges. Lucide is ISC licensed (lucide.dev); it is built into index.html.
+  - Appearance... (right-click a note, folder, project, PDF, or a file on the Files
+    page): pick any icon + colour, optionally tint the whole tile/row. Shows in the left
+    pane, tiles, cards and file lists. Folder/project can apply to everything inside.
+  - Appearance studio (palette button in the top bar): accent colour, icon style
+    (plain / bubble / badge / ring), line weight, corner roundness, list text size,
+    label weight, left pane row height and icon size, quick looks.
+  - Insert icon in a note (smile button in the format bar, or Ctrl+K > Insert icon).
+  - Files that cannot open in the browser (Word, Excel, PowerPoint) now open in their
+    Office app when the folder path is set, instead of downloading.
+  Notes: custom file icons are remembered by their place in the linked folder. They
+  follow a rename done here, but are forgotten if the file is moved to another folder.
+  Views and looks are saved in the browser (and in your save-folder settings backup).
 
 What changed in 2.5.0
   - Linked folders: right-click a project or folder > "Link folder" and pick a folder
